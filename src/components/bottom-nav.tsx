@@ -33,6 +33,22 @@ function BriefsIcon({ active }: { active: boolean }) {
   )
 }
 
+function EarningsIcon({ active }: { active: boolean }) {
+  const c = active ? '#C6F23E' : '#5C584C'
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <rect
+        x="2" y="6" width="20" height="14" rx="2"
+        stroke={c}
+        fill={active ? c : 'none'}
+        fillOpacity={active ? 0.15 : 0}
+      />
+      <path d="M2 10h20" stroke={c} />
+      <circle cx="17" cy="14" r="1.5" fill={c} stroke="none" />
+    </svg>
+  )
+}
+
 function RewardsIcon({ active }: { active: boolean }) {
   const c = active ? '#C6F23E' : '#5C584C'
   return (
@@ -48,9 +64,10 @@ function RewardsIcon({ active }: { active: boolean }) {
 }
 
 const TABS = [
-  { href: '/swipe',   label: 'Swipe',   Icon: SwipeIcon },
-  { href: '/briefs',  label: 'Briefs',  Icon: BriefsIcon },
-  { href: '/rewards', label: 'Rewards', Icon: RewardsIcon },
+  { href: '/swipe',              label: 'Swipe',    Icon: SwipeIcon },
+  { href: '/briefs',             label: 'Briefs',   Icon: BriefsIcon },
+  { href: '/dashboard/earnings', label: 'Earnings', Icon: EarningsIcon },
+  { href: '/rewards',            label: 'Rewards',  Icon: RewardsIcon },
 ]
 
 export function BottomNav() {
@@ -88,8 +105,8 @@ export function BottomNav() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                minWidth: 80,
-                padding: '9px 20px 7px',
+                minWidth: 72,
+                padding: '9px 14px 7px',
                 borderRadius: 9999,
                 background: active ? 'rgba(198,242,62,0.09)' : 'transparent',
                 WebkitTapHighlightColor: 'transparent',
