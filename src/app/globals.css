@@ -34,8 +34,13 @@
   * {
     border-color: var(--border);
   }
+  html {
+    background-color: #100F0C;
+    min-height: 100dvh;
+  }
   body {
-    /* Background handled by the fixed gradient+grain layer in layout.tsx */
+    background-color: #100F0C;
+    min-height: 100dvh;
     color: var(--foreground);
   }
   /* Unbounded display headings */

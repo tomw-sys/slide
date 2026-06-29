@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Unbounded } from 'next/font/google'
 import './globals.css'
 
@@ -8,6 +8,12 @@ const unbounded = Unbounded({ subsets: ['latin'], weight: ['900'], variable: '--
 export const metadata: Metadata = {
   title: 'Slide',
   description: 'The UGC creator platform. Brands meet creators.',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
