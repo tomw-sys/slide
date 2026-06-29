@@ -18,10 +18,20 @@ export default function LandingPage() {
         <div style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '24px' }}>
           slide<span style={{ color: '#C6F23E' }}>.</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '22px', fontWeight: 600, fontSize: '14px', color: '#BDB8A8' }}>
-          <Link href="/swipe" style={{ color: 'inherit', textDecoration: 'none' }}>creators</Link>
-          <Link href="/briefs" style={{ color: 'inherit', textDecoration: 'none' }}>brands</Link>
-          <Link href="/rewards" style={{ color: 'inherit', textDecoration: 'none' }}>rewards</Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600, fontSize: '14px' }}>
+          <Link
+            href="/sign-in"
+            style={{
+              padding: '10px 20px',
+              borderRadius: '999px',
+              border: '1.5px solid #3A362A',
+              color: '#BDB8A8',
+              fontWeight: 700,
+              textDecoration: 'none',
+            }}
+          >
+            Sign in
+          </Link>
           <Link
             href="/sign-up"
             style={{
@@ -33,7 +43,7 @@ export default function LandingPage() {
               textDecoration: 'none',
             }}
           >
-            get started
+            Sign up
           </Link>
         </div>
       </nav>
