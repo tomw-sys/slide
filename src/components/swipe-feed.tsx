@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { recordSwipe } from '@/app/actions/briefs'
+import { ResetSwipesButton } from './reset-swipes-button'
 
 interface Brief {
   id: string
@@ -210,6 +211,9 @@ export function SwipeFeed({ briefs }: Props) {
         <p className="text-[#8a8575] text-sm max-w-xs animate-fade-up" style={{ animationDelay: '160ms' }}>
           New briefs appear here as brands post them. Check back soon.
         </p>
+        <div className="animate-fade-up mt-2" style={{ animationDelay: '220ms' }}>
+          <ResetSwipesButton />
+        </div>
       </div>
     )
   }
