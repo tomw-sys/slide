@@ -39,7 +39,7 @@ export default async function SwipePage() {
 
   let query = supabase
     .from('briefs')
-    .select('id, title, description, budget, deadline, niches, image_url, profiles!brand_id(display_name, brand_profiles(company_name))')
+    .select('id, title, description, budget, deadline, niches, profiles!brand_id(display_name, brand_profiles(company_name))')
     .eq('status', 'live')
     .order('created_at', { ascending: false })
     .limit(50)
@@ -69,7 +69,6 @@ export default async function SwipePage() {
       budget: b.budget,
       deadline: b.deadline,
       niches: b.niches,
-      image_url: (b as Record<string, unknown>).image_url as string | null ?? null,
       brand_name: brandName,
     }
   })
