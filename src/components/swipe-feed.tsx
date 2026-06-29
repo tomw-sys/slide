@@ -12,6 +12,7 @@ interface Brief {
   deadline: string | null
   niches: string[] | null
   brand_name: string
+  image_url?: string | null
 }
 
 interface Props {
@@ -43,6 +44,17 @@ function getNicheGradient(niches: string[] | null): string {
   }
   const hash = niches[0].split('').reduce((acc, c) => acc + c.charCodeAt(0), 0)
   return FALLBACK_GRADIENTS[hash % FALLBACK_GRADIENTS.length]
+}
+
+function getCardBackground(brief: Brief): React.CSSProperties {
+  if (brief.image_url) {
+    return {
+      backgroundImage: `url(${brief.image_url})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }
+  }
+  return { background: getNicheGradient(brief.niches) }
 }
 
 function formatBudget(pence: number) {
@@ -202,9 +214,9 @@ export function SwipeFeed({ briefs }: Props) {
     )
   }
 
-  const gradient = getNicheGradient(current.niches)
-  const nextGradient = next ? getNicheGradient(next.niches) : null
   const primaryNiche = current.niches?.[0] ?? null
+  const currentBg = getCardBackground(current)
+  const hasPhotoOverlay = !!current.image_url
 
   return (
     <div
@@ -218,143 +230,181 @@ export function SwipeFeed({ briefs }: Props) {
         </span>
       </div>
 
-      {/* Card stack — full width, fills available height */}
-      <div className="flex-1 relative">
-          {/* Next card — peeking underneath */}
-          {next && nextGradient && (
-            <div
-              ref={nextCardRef}
-              className="absolute inset-0 overflow-hidden"
-              style={{ zIndex: 0, transform: 'scale(0.93)', opacity: 0.45, background: nextGradient }}
-            >
-              {/* Dark bottom scrim for text legibility */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)' }}
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-white text-lg font-black leading-tight line-clamp-2">{next.title}</p>
-                <p className="text-white/60 text-xs mt-1">{next.brand_name}</p>
-              </div>
-            </div>
-          )}
-
-          {/* Active card */}
+      {/* Card stack — 16px inset from screen edges */}
+      <div className="flex-1 relative mx-4">
+        {/* Next card — peeking underneath */}
+        {next && (
           <div
-            ref={cardRef}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerCancel={onPointerUp}
-            key={current.id}
-            className="absolute inset-0 overflow-hidden touch-none animate-card-enter"
+            ref={nextCardRef}
+            className="absolute inset-0 overflow-hidden"
             style={{
-              zIndex: 1,
-              cursor: 'grab',
-              background: gradient,
-              transition: exitDir
-                ? 'transform 0.34s cubic-bezier(0.4,0,0.2,1), opacity 0.34s'
-                : undefined,
-              transform: exitDir === 'left'
-                ? 'translateX(-130%) rotate(-22deg)'
-                : exitDir === 'right'
-                ? 'translateX(130%) rotate(22deg)'
-                : undefined,
-              opacity: exitDir ? 0 : undefined,
+              zIndex: 0,
+              transform: 'scale(0.93)',
+              opacity: 0.45,
+              borderRadius: 24,
+              ...getCardBackground(next),
             }}
           >
-            {/* Dark bottom scrim for text legibility */}
             <div
               className="absolute inset-0 pointer-events-none"
-              style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 45%, transparent 70%)' }}
+              style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)' }}
             />
-
-            {/* PASS stamp */}
-            <div
-              ref={passLabelRef}
-              className="absolute top-8 right-5 z-20 pointer-events-none rotate-[14deg]"
-              style={{ opacity: 0 }}
-            >
-              <div className="border-[3px] border-[#ef4444] rounded-xl px-4 py-1.5 bg-black/40 backdrop-blur-sm">
-                <span className="text-[#ef4444] font-black text-xl tracking-[0.2em] uppercase">PASS</span>
-              </div>
-            </div>
-
-            {/* SLIDE stamp */}
-            <div
-              ref={slideLabelRef}
-              className="absolute top-8 left-5 z-20 pointer-events-none -rotate-[14deg]"
-              style={{ opacity: 0 }}
-            >
-              <div className="border-[3px] border-[#C6F23E] rounded-xl px-4 py-1.5 bg-black/40 backdrop-blur-sm">
-                <span className="text-[#C6F23E] font-black text-xl tracking-[0.2em] uppercase">SLIDE</span>
-              </div>
-            </div>
-
-            {/* Top badges */}
-            <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between z-10">
-              {primaryNiche ? (
-                <span className="bg-black/30 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border border-white/20">
-                  {primaryNiche}
-                </span>
-              ) : (
-                <span />
-              )}
-              <div className="flex items-center gap-1.5 bg-black/30 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/20">
-                <svg viewBox="0 0 20 20" fill="#C6F23E" className="w-3.5 h-3.5 flex-shrink-0">
-                  <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                </svg>
-                <span className="text-[11px] font-semibold text-white uppercase tracking-wider">Verified</span>
-              </div>
-            </div>
-
-            {/* Bottom content */}
-            <div className="absolute bottom-0 left-0 right-0 px-6 pb-6 z-10">
-              {current.budget && (
-                <p className="text-[#C6F23E] text-4xl font-black leading-none mb-2">
-                  {formatBudget(current.budget)}
-                </p>
-              )}
-              <h2 className="text-white text-2xl font-black leading-tight mb-3">
-                {current.title}
-              </h2>
-              <div className="flex items-center justify-between">
-                <p className="text-white/80 text-sm font-medium">{current.brand_name}</p>
-                {current.deadline && (
-                  <span className="text-white/60 text-xs">{daysLeft(current.deadline)}</span>
-                )}
-              </div>
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <p className="text-white text-lg font-black leading-tight line-clamp-2">{next.title}</p>
+              <p className="text-white/60 text-xs mt-1">{next.brand_name}</p>
             </div>
           </div>
+        )}
+
+        {/* Active card */}
+        <div
+          ref={cardRef}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          key={current.id}
+          className="absolute inset-0 overflow-hidden touch-none animate-card-enter"
+          style={{
+            zIndex: 1,
+            cursor: 'grab',
+            borderRadius: 24,
+            transition: exitDir
+              ? 'transform 0.34s cubic-bezier(0.4,0,0.2,1), opacity 0.34s'
+              : undefined,
+            transform: exitDir === 'left'
+              ? 'translateX(-130%) rotate(-22deg)'
+              : exitDir === 'right'
+              ? 'translateX(130%) rotate(22deg)'
+              : undefined,
+            opacity: exitDir ? 0 : undefined,
+            ...currentBg,
+          }}
+        >
+          {/* Dark scrim — heavier for photos, lighter for gradients */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: hasPhotoOverlay
+                ? 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)'
+                : 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 45%, transparent 70%)',
+            }}
+          />
+
+          {/* PASS stamp */}
+          <div
+            ref={passLabelRef}
+            className="absolute top-8 right-5 z-20 pointer-events-none rotate-[14deg]"
+            style={{ opacity: 0 }}
+          >
+            <div className="border-[3px] border-[#ef4444] rounded-xl px-4 py-1.5 bg-black/40 backdrop-blur-sm">
+              <span className="text-[#ef4444] font-black text-xl tracking-[0.2em] uppercase">PASS</span>
+            </div>
+          </div>
+
+          {/* SLIDE stamp */}
+          <div
+            ref={slideLabelRef}
+            className="absolute top-8 left-5 z-20 pointer-events-none -rotate-[14deg]"
+            style={{ opacity: 0 }}
+          >
+            <div className="border-[3px] border-[#C6F23E] rounded-xl px-4 py-1.5 bg-black/40 backdrop-blur-sm">
+              <span className="text-[#C6F23E] font-black text-xl tracking-[0.2em] uppercase">SLIDE</span>
+            </div>
+          </div>
+
+          {/* Top badges */}
+          <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between z-10">
+            {primaryNiche ? (
+              <span
+                className="text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full"
+                style={{ background: 'rgba(0,0,0,0.5)' }}
+              >
+                {primaryNiche}
+              </span>
+            ) : (
+              <span />
+            )}
+            {/* Verified badge — solid lime pill */}
+            <div className="flex items-center gap-1.5 bg-[#C6F23E] rounded-full px-3 py-1.5">
+              <svg viewBox="0 0 20 20" fill="#100F0C" className="w-3.5 h-3.5 flex-shrink-0">
+                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+              </svg>
+              <span className="text-[11px] font-bold text-[#100F0C] uppercase tracking-wider">Verified</span>
+            </div>
+          </div>
+
+          {/* Bottom content */}
+          <div className="absolute bottom-0 left-0 right-0 px-6 pb-6 z-10">
+            {current.budget && (
+              <p className="text-[#C6F23E] text-4xl font-black leading-none mb-2">
+                {formatBudget(current.budget)}
+              </p>
+            )}
+            <h2 className="text-white text-2xl font-black leading-tight mb-3">
+              {current.title}
+            </h2>
+            <div className="flex items-center justify-between">
+              <p className="text-white/80 text-sm font-medium">{current.brand_name}</p>
+              {current.deadline && (
+                <span className="text-white/60 text-xs">{daysLeft(current.deadline)}</span>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Action buttons */}
       <div
-        className="flex-shrink-0 flex items-center justify-center gap-8 px-6 pt-5"
+        className="flex-shrink-0 flex items-center justify-center gap-10 px-6 pt-5"
         style={{ paddingBottom: 'max(calc(env(safe-area-inset-bottom) + 84px), 100px)' }}
       >
+        {/* Pass */}
         <button
           onClick={handlePass}
           disabled={busy}
           aria-label="Pass"
-          className="group flex flex-col items-center gap-1.5 disabled:opacity-40 tap-scale"
+          className="group flex flex-col items-center gap-2 disabled:opacity-40 tap-scale"
         >
-          <span className="w-16 h-16 rounded-full bg-[#17150F] border-2 border-[#ef4444]/30 flex items-center justify-center text-[#ef4444] text-xl group-hover:border-[#ef4444] group-hover:bg-[#ef4444]/10 transition-all">
+          <span
+            className="flex items-center justify-center transition-all"
+            style={{
+              width: 64,
+              height: 64,
+              borderRadius: '50%',
+              border: '2px solid #FF5C9D',
+              background: 'transparent',
+              color: '#FF5C9D',
+              fontSize: 22,
+            }}
+          >
             ✕
           </span>
-          <span className="text-[#8a8575] text-[10px] uppercase tracking-widest font-semibold">Pass</span>
+          <span className="text-[#8a8575] text-[10px] uppercase tracking-widest font-bold">Pass</span>
         </button>
 
+        {/* Slide */}
         <button
           onClick={handleSlide}
           disabled={busy}
           aria-label="Slide"
-          className="group flex flex-col items-center gap-1.5 disabled:opacity-40 tap-scale"
+          className="group flex flex-col items-center gap-2 disabled:opacity-40 tap-scale"
         >
-          <span className="w-20 h-20 rounded-full bg-[#C6F23E] flex items-center justify-center text-[#100F0C] text-3xl group-hover:bg-[#ADDA38] transition-all shadow-[0_0_32px_rgba(198,242,62,0.3)]">
+          <span
+            className="flex items-center justify-center transition-all"
+            style={{
+              width: 64,
+              height: 64,
+              borderRadius: '50%',
+              background: '#C6F23E',
+              color: '#100F0C',
+              fontSize: 26,
+              boxShadow: '0 0 32px rgba(198,242,62,0.3)',
+            }}
+          >
             →
           </span>
-          <span className="text-[#C6F23E] text-[10px] uppercase tracking-widest font-semibold">Slide</span>
+          <span className="text-[#C6F23E] text-[10px] uppercase tracking-widest font-bold">Slide</span>
         </button>
       </div>
     </div>

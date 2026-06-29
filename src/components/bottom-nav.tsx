@@ -3,51 +3,54 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+function SwipeIcon({ active }: { active: boolean }) {
+  const c = active ? '#C6F23E' : '#5C584C'
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      {/* Back card */}
+      <rect x="6" y="5" width="14" height="14" rx="2" stroke={c} fill={active ? c : 'none'} fillOpacity={active ? 0.12 : 0} />
+      {/* Front card */}
+      <rect x="4" y="7" width="14" height="14" rx="2" stroke={c} fill={active ? c : 'none'} fillOpacity={active ? 0.18 : 0} />
+    </svg>
+  )
+}
+
+function BriefsIcon({ active }: { active: boolean }) {
+  const c = active ? '#C6F23E' : '#5C584C'
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path
+        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+        stroke={c}
+        fill={active ? c : 'none'}
+        fillOpacity={active ? 0.15 : 0}
+      />
+      <polyline points="14 2 14 8 20 8" stroke={c} />
+      <line x1="16" y1="13" x2="8" y2="13" stroke={c} />
+      <line x1="16" y1="17" x2="8" y2="17" stroke={c} />
+      <line x1="10" y1="9" x2="8" y2="9" stroke={c} />
+    </svg>
+  )
+}
+
+function RewardsIcon({ active }: { active: boolean }) {
+  const c = active ? '#C6F23E' : '#5C584C'
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path
+        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+        stroke={c}
+        fill={active ? c : 'none'}
+        fillOpacity={active ? 0.18 : 0}
+      />
+    </svg>
+  )
+}
+
 const TABS = [
-  {
-    href: '/swipe',
-    label: 'Swipe',
-    icon: (active: boolean) => (
-      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
-        <path
-          d="M12 4.5C10 6.5 7 9 7 12.5a5 5 0 0 0 10 0c0-3.5-3-6-5-8z"
-          stroke={active ? '#C6F23E' : '#5C584C'}
-          fill={active ? '#C6F23E' : 'none'}
-          fillOpacity={active ? 0.18 : 0}
-        />
-        <path d="M9 14.5l3 3 3-3" stroke={active ? '#C6F23E' : '#5C584C'} />
-      </svg>
-    ),
-  },
-  {
-    href: '/briefs',
-    label: 'Briefs',
-    icon: (active: boolean) => (
-      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        <rect
-          x="4" y="4" width="16" height="16" rx="3"
-          stroke={active ? '#C6F23E' : '#5C584C'}
-          fill={active ? '#C6F23E' : 'none'}
-          fillOpacity={active ? 0.14 : 0}
-        />
-        <path d="M8 9h8M8 13h5" stroke={active ? '#C6F23E' : '#5C584C'} />
-      </svg>
-    ),
-  },
-  {
-    href: '/rewards',
-    label: 'Rewards',
-    icon: (active: boolean) => (
-      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        <path
-          d="M12 3l2.2 6.7H21l-5.6 4.1 2.1 6.7L12 16.5l-5.5 4 2.1-6.7L3 9.7h6.8z"
-          stroke={active ? '#C6F23E' : '#5C584C'}
-          fill={active ? '#C6F23E' : 'none'}
-          fillOpacity={active ? 0.18 : 0}
-        />
-      </svg>
-    ),
-  },
+  { href: '/swipe',   label: 'Swipe',   Icon: SwipeIcon },
+  { href: '/briefs',  label: 'Briefs',  Icon: BriefsIcon },
+  { href: '/rewards', label: 'Rewards', Icon: RewardsIcon },
 ]
 
 export function BottomNav() {
@@ -62,43 +65,24 @@ export function BottomNav() {
         transform: 'translateX(-50%)',
       }}
     >
-      {/* Neon green bloom behind the pill */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 380,
-          height: 140,
-          background: 'radial-gradient(ellipse at center, rgba(198,242,62,0.32) 0%, rgba(198,242,62,0.12) 45%, transparent 70%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-
-      {/* Pill */}
       <nav
         style={{
-          position: 'relative',
-          zIndex: 1,
           display: 'flex',
           alignItems: 'center',
-          background: 'rgba(16,15,12,0.88)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
+          background: 'rgba(23, 21, 15, 0.95)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           borderRadius: 9999,
           border: '1px solid rgba(255,255,255,0.08)',
           padding: '5px 5px',
         }}
       >
-        {TABS.map((tab) => {
-          const active = pathname === tab.href || pathname.startsWith(tab.href + '/')
+        {TABS.map(({ href, label, Icon }) => {
+          const active = pathname === href || pathname.startsWith(href + '/')
           return (
             <Link
-              key={tab.href}
-              href={tab.href}
+              key={href}
+              href={href}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -120,9 +104,8 @@ export function BottomNav() {
                     : undefined
                 }
               >
-                {tab.icon(active)}
+                <Icon active={active} />
               </span>
-              {/* Label: visible on active, invisible (space reserved) on inactive */}
               <span
                 style={{
                   fontSize: 10,
@@ -136,7 +119,7 @@ export function BottomNav() {
                   userSelect: 'none',
                 }}
               >
-                {tab.label}
+                {label}
               </span>
             </Link>
           )
