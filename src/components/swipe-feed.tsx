@@ -20,25 +20,29 @@ interface Props {
 
 const SWIPE_THRESHOLD = 80
 
-const NICHE_IMAGE: Record<string, string> = {
-  Fashion:   '1558618666-fcd25c85cd64',
-  Beauty:    '1522335789203-aabd1fc54bc9',
-  Food:      '1565299624946-b28f40a0ae38',
-  Travel:    '1476514525535-07fb3b4ae5f1',
-  Gaming:    '1542751371-adc38448a05e',
-  Lifestyle: '1506126613408-eca07ce68773',
-  Fitness:   '1517836357463-d25dfeac3438',
+const NICHE_GRADIENT: Record<string, string> = {
+  Gaming:    'linear-gradient(135deg, #7C5CFF 0%, #4D8BFF 100%)',
+  Food:      'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)',
+  Lifestyle: 'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)',
+  Beauty:    'linear-gradient(135deg, #FF5C9D 0%, #FF8C42 100%)',
+  Fashion:   'linear-gradient(135deg, #FF5C9D 0%, #FF8C42 100%)',
+  Travel:    'linear-gradient(135deg, #7C5CFF 0%, #4D8BFF 100%)',
+  Fitness:   'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)',
 }
 
-const FALLBACK_IMAGES = Object.values(NICHE_IMAGE)
+const FALLBACK_GRADIENTS = [
+  'linear-gradient(135deg, #7C5CFF 0%, #4D8BFF 100%)',
+  'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)',
+  'linear-gradient(135deg, #FF5C9D 0%, #FF8C42 100%)',
+]
 
-function getNicheImage(niches: string[] | null): string {
-  if (!niches || niches.length === 0) return FALLBACK_IMAGES[0]
+function getNicheGradient(niches: string[] | null): string {
+  if (!niches || niches.length === 0) return FALLBACK_GRADIENTS[0]
   for (const n of niches) {
-    if (NICHE_IMAGE[n]) return NICHE_IMAGE[n]
+    if (NICHE_GRADIENT[n]) return NICHE_GRADIENT[n]
   }
   const hash = niches[0].split('').reduce((acc, c) => acc + c.charCodeAt(0), 0)
-  return FALLBACK_IMAGES[hash % FALLBACK_IMAGES.length]
+  return FALLBACK_GRADIENTS[hash % FALLBACK_GRADIENTS.length]
 }
 
 function formatBudget(pence: number) {
@@ -198,12 +202,9 @@ export function SwipeFeed({ briefs }: Props) {
     )
   }
 
-  const photoId = getNicheImage(current.niches)
-  const imageUrl = `https://images.unsplash.com/photo-${photoId}?w=800&q=80`
+  const gradient = getNicheGradient(current.niches)
+  const nextGradient = next ? getNicheGradient(next.niches) : null
   const primaryNiche = current.niches?.[0] ?? null
-
-  const nextPhotoId = next ? getNicheImage(next.niches) : null
-  const nextImageUrl = nextPhotoId ? `https://images.unsplash.com/photo-${nextPhotoId}?w=800&q=80` : null
 
   return (
     <div
@@ -220,25 +221,20 @@ export function SwipeFeed({ briefs }: Props) {
       {/* Card stack — full width, fills available height */}
       <div className="flex-1 relative">
           {/* Next card — peeking underneath */}
-          {next && nextImageUrl && (
+          {next && nextGradient && (
             <div
               ref={nextCardRef}
-              className="absolute inset-0 overflow-hidden bg-[#111]"
-              style={{ zIndex: 0, transform: 'scale(0.93)', opacity: 0.45 }}
+              className="absolute inset-0 overflow-hidden"
+              style={{ zIndex: 0, transform: 'scale(0.93)', opacity: 0.45, background: nextGradient }}
             >
-              <img
-                src={nextImageUrl}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-                draggable={false}
-              />
+              {/* Dark bottom scrim for text legibility */}
               <div
-                className="absolute inset-0"
-                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.1) 100%)' }}
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)' }}
               />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <p className="text-white text-lg font-black leading-tight line-clamp-2">{next.title}</p>
-                <p className="text-[#8a8575] text-xs mt-1">{next.brand_name}</p>
+                <p className="text-white/60 text-xs mt-1">{next.brand_name}</p>
               </div>
             </div>
           )}
@@ -251,10 +247,11 @@ export function SwipeFeed({ briefs }: Props) {
             onPointerUp={onPointerUp}
             onPointerCancel={onPointerUp}
             key={current.id}
-            className="absolute inset-0 overflow-hidden touch-none animate-card-enter bg-[#111]"
+            className="absolute inset-0 overflow-hidden touch-none animate-card-enter"
             style={{
               zIndex: 1,
               cursor: 'grab',
+              background: gradient,
               transition: exitDir
                 ? 'transform 0.34s cubic-bezier(0.4,0,0.2,1), opacity 0.34s'
                 : undefined,
@@ -266,18 +263,10 @@ export function SwipeFeed({ briefs }: Props) {
               opacity: exitDir ? 0 : undefined,
             }}
           >
-            {/* Full-bleed background image */}
-            <img
-              src={imageUrl}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-              draggable={false}
-            />
-
-            {/* Gradient overlay — transparent top, dark bottom */}
+            {/* Dark bottom scrim for text legibility */}
             <div
               className="absolute inset-0 pointer-events-none"
-              style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,0.1) 100%)' }}
+              style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 45%, transparent 70%)' }}
             />
 
             {/* PASS stamp */}
@@ -305,13 +294,13 @@ export function SwipeFeed({ briefs }: Props) {
             {/* Top badges */}
             <div className="absolute top-0 left-0 right-0 p-5 flex items-start justify-between z-10">
               {primaryNiche ? (
-                <span className="bg-black/50 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border border-white/20">
+                <span className="bg-black/30 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border border-white/20">
                   {primaryNiche}
                 </span>
               ) : (
                 <span />
               )}
-              <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/20">
+              <div className="flex items-center gap-1.5 bg-black/30 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/20">
                 <svg viewBox="0 0 20 20" fill="#C6F23E" className="w-3.5 h-3.5 flex-shrink-0">
                   <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                 </svg>
@@ -330,9 +319,9 @@ export function SwipeFeed({ briefs }: Props) {
                 {current.title}
               </h2>
               <div className="flex items-center justify-between">
-                <p className="text-[#F4EFE3] text-sm font-medium">{current.brand_name}</p>
+                <p className="text-white/80 text-sm font-medium">{current.brand_name}</p>
                 {current.deadline && (
-                  <span className="text-[#8a8575] text-xs">{daysLeft(current.deadline)}</span>
+                  <span className="text-white/60 text-xs">{daysLeft(current.deadline)}</span>
                 )}
               </div>
             </div>

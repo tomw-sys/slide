@@ -101,7 +101,7 @@ export default async function CreatorDashboardPage() {
 
       {/* Page greeting — pushed below fixed header */}
       <div className="px-5 pb-5" style={{ paddingTop: 'max(calc(env(safe-area-inset-top) + 72px), 88px)' }}>
-        <h1 className="text-white text-3xl font-black leading-tight">
+        <h1 className="text-white text-5xl font-extrabold leading-tight">
           Hey, {firstName}
         </h1>
         <p className={`text-sm font-semibold uppercase tracking-wider mt-1 ${TIER_COLOUR[tier]}`}>

@@ -115,8 +115,8 @@ export default async function RewardsPage() {
                   </span>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2 stagger-children">
-                  {available.map((reward: Reward) => (
-                    <RewardCard key={reward.id} reward={reward} />
+                  {available.map((reward: Reward, i: number) => (
+                    <RewardCard key={reward.id} reward={reward} index={i} />
                   ))}
                 </div>
               </section>
@@ -137,8 +137,8 @@ export default async function RewardsPage() {
                   </span>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2 opacity-70">
-                  {redeemed.map((reward: Reward) => (
-                    <RewardCard key={reward.id} reward={reward} />
+                  {redeemed.map((reward: Reward, i: number) => (
+                    <RewardCard key={reward.id} reward={reward} index={i} />
                   ))}
                 </div>
               </section>
