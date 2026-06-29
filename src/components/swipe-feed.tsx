@@ -22,28 +22,22 @@ interface Props {
 const SWIPE_THRESHOLD = 80
 
 const NICHE_GRADIENT: Record<string, string> = {
-  Gaming:    'linear-gradient(135deg, #7C5CFF 0%, #4D8BFF 100%)',
-  Food:      'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)',
-  Lifestyle: 'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)',
-  Beauty:    'linear-gradient(135deg, #FF5C9D 0%, #FF8C42 100%)',
-  Fashion:   'linear-gradient(135deg, #FF5C9D 0%, #FF8C42 100%)',
-  Travel:    'linear-gradient(135deg, #7C5CFF 0%, #4D8BFF 100%)',
-  Fitness:   'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)',
+  Lifestyle: 'linear-gradient(135deg, #7C5CFF, #4D8BFF)',
+  Travel:    'linear-gradient(135deg, #7C5CFF, #4D8BFF)',
+  Beauty:    'linear-gradient(135deg, #FF5C9D, #7C5CFF)',
+  Fashion:   'linear-gradient(135deg, #FF5C9D, #7C5CFF)',
+  Food:      'linear-gradient(135deg, #FF8C42, #FF5C9D)',
+  Gaming:    'linear-gradient(135deg, #4D8BFF, #7C5CFF)',
 }
 
-const FALLBACK_GRADIENTS = [
-  'linear-gradient(135deg, #7C5CFF 0%, #4D8BFF 100%)',
-  'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)',
-  'linear-gradient(135deg, #FF5C9D 0%, #FF8C42 100%)',
-]
+const DEFAULT_GRADIENT = 'linear-gradient(135deg, #7C5CFF, #C6F23E)'
 
 function getNicheGradient(niches: string[] | null): string {
-  if (!niches || niches.length === 0) return FALLBACK_GRADIENTS[0]
+  if (!niches || niches.length === 0) return DEFAULT_GRADIENT
   for (const n of niches) {
     if (NICHE_GRADIENT[n]) return NICHE_GRADIENT[n]
   }
-  const hash = niches[0].split('').reduce((acc, c) => acc + c.charCodeAt(0), 0)
-  return FALLBACK_GRADIENTS[hash % FALLBACK_GRADIENTS.length]
+  return DEFAULT_GRADIENT
 }
 
 function getCardBackground(brief: Brief): React.CSSProperties {
@@ -286,7 +280,7 @@ export function SwipeFeed({ briefs }: Props) {
             className="absolute inset-0 pointer-events-none"
             style={{
               background: hasPhotoOverlay
-                ? 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)'
+                ? 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)'
                 : 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 45%, transparent 70%)',
             }}
           />
