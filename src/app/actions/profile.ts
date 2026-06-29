@@ -1,6 +1,74 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
+
+type SocialLinks = {
+  instagram?: string
+  tiktok?: string
+  youtube?: string
+}
+
+type ProfileUpdate = {
+  display_name: string
+  username: string
+  bio: string
+  niches: string[]
+  social_links: SocialLinks
+  role: string
+}
+
+export async function updateProfile(data: ProfileUpdate): Promise<{ error?: string }> {
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  if (!user) return { error: 'Not authenticated' }
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({
+      display_name: data.display_name || null,
+      username: data.username || null,
+      bio: data.bio || null,
+      niches: data.niches.length > 0 ? data.niches : null,
+      social_links: Object.values(data.social_links).some(Boolean) ? data.social_links : null,
+    })
+    .eq('id', user.id)
+
+  if (error) return { error: error.message }
+
+  // Keep creator_profiles.niches in sync so the swipe matching system stays current
+  if (data.role === 'creator') {
+    await supabase
+      .from('creator_profiles')
+      .update({ niches: data.niches.length > 0 ? data.niches : null })
+      .eq('id', user.id)
+  }
+
+  revalidatePath('/profile')
+  revalidatePath('/swipe')
+  revalidatePath('/dashboard')
+  return {}
+}
+
+export async function updateAvatarUrl(avatarUrl: string): Promise<{ error?: string }> {
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  if (!user) return { error: 'Not authenticated' }
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({ avatar_url: avatarUrl })
+    .eq('id', user.id)
+
+  if (error) return { error: error.message }
+
+  revalidatePath('/profile')
+  return {}
+}
 
 export async function completeCreatorOnboarding(
   formData: FormData
