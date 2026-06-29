@@ -1,129 +1,120 @@
 import Link from 'next/link'
 
-const BRIEF_CARDS = [
-  { id: 1, niche: 'Beauty',    budget: '£450', brand: 'Glow Lab',     days: '12 days left', gradient: 'linear-gradient(135deg, #FF5C9D 0%, #7C5CFF 100%)' },
-  { id: 2, niche: 'Travel',    budget: '£850', brand: 'Atlas Stay',   days: '8 days left',  gradient: 'linear-gradient(135deg, #4D8BFF 0%, #00C6FF 100%)' },
-  { id: 3, niche: 'Food',      budget: '£300', brand: 'Pasta & Co.',  days: '5 days left',  gradient: 'linear-gradient(135deg, #FF8C42 0%, #FF5C9D 100%)' },
-  { id: 4, niche: 'Gaming',    budget: '£600', brand: 'GameZone UK',  days: '18 days left', gradient: 'linear-gradient(135deg, #7C5CFF 0%, #4D8BFF 100%)' },
-  { id: 5, niche: 'Fashion',   budget: '£750', brand: 'Studio Blanc', days: '10 days left', gradient: 'linear-gradient(135deg, #C6F23E 0%, #4D8BFF 100%)' },
-  { id: 6, niche: 'Lifestyle', budget: '£350', brand: 'Calm Ritual',  days: '22 days left', gradient: 'linear-gradient(135deg, #FF5C9D 0%, #FF8C42 100%)' },
-]
-
-const REWARD_CARDS = [
-  { brand: 'Selfridges',   offer: '15% off in-store',  gradient: 'linear-gradient(150deg, #FF5C9D 0%, #7C5CFF 100%)' },
-  { brand: 'ASOS',         offer: '20% off everything', gradient: 'linear-gradient(150deg, #C6F23E 0%, #4D8BFF 100%)' },
-  { brand: 'Cineworld',    offer: '2 for 1 tickets',    gradient: 'linear-gradient(150deg, #7C5CFF 0%, #4D8BFF 100%)' },
-  { brand: 'Booking.com',  offer: '20% off stays',      gradient: 'linear-gradient(150deg, #FF8C42 0%, #FF5C9D 100%)' },
-]
-
-const TICKER_TEXT = 'BEAUTY ✦ FOOD ✦ TRAVEL ✦ FASHION ✦ GAMING ✦ FITNESS ✦ MUSIC ✦ LIFESTYLE ✦ TECH ✦ PARENTING ✦ '
-
 export default function LandingPage() {
   return (
-    <div className="bg-[#100F0C] text-white overflow-x-hidden">
-
-      {/* ── NAV ─────────────────────────────────────────────────────── */}
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6"
-        style={{
-          background: '#100F0C',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-          paddingTop: 'max(env(safe-area-inset-top), 14px)',
-          paddingBottom: 14,
-        }}
-      >
-        <span className="font-display font-black text-xl text-white">
+    <main
+      style={{
+        width: '100%',
+        maxWidth: '1320px',
+        margin: '0 auto',
+        background: '#100F0C',
+        overflow: 'hidden',
+        fontFamily: 'var(--font-space-grotesk), "Space Grotesk", sans-serif',
+        color: '#FBF8F1',
+      }}
+    >
+      {/* ── Nav ── */}
+      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '22px 40px' }}>
+        <div style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '24px' }}>
           slide<span style={{ color: '#C6F23E' }}>.</span>
-        </span>
-
-        <div className="hidden md:flex items-center gap-8">
-          {(['creators', 'brands', 'rewards'] as const).map((label) => (
-            <a
-              key={label}
-              href={`#${label}`}
-              className="text-sm text-[#8a8575] hover:text-white transition-colors"
-            >
-              {label}
-            </a>
-          ))}
         </div>
-
-        <Link
-          href="/sign-up/creator"
-          className="text-sm font-bold text-white rounded-full px-5 py-2.5 transition-opacity hover:opacity-85"
-          style={{ background: '#FF5C9D' }}
-        >
-          get started
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '22px', fontWeight: 600, fontSize: '14px', color: '#BDB8A8' }}>
+          <Link href="/swipe" style={{ color: 'inherit', textDecoration: 'none' }}>creators</Link>
+          <Link href="/briefs" style={{ color: 'inherit', textDecoration: 'none' }}>brands</Link>
+          <Link href="/rewards" style={{ color: 'inherit', textDecoration: 'none' }}>rewards</Link>
+          <Link
+            href="/sign-up"
+            style={{
+              padding: '10px 20px',
+              borderRadius: '999px',
+              background: '#FF5C9D',
+              color: '#100F0C',
+              fontWeight: 700,
+              textDecoration: 'none',
+            }}
+          >
+            get started
+          </Link>
+        </div>
       </nav>
 
-      {/* ── HERO ────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-28 pb-20 overflow-hidden">
-        {/* Ambient glows */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 50% -10%, rgba(198,242,62,0.09) 0%, transparent 60%)' }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 88% 45%, rgba(255,92,157,0.07) 0%, transparent 50%)' }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 10% 60%, rgba(124,92,255,0.06) 0%, transparent 50%)' }}
-        />
-
-        {/* Floating pills — desktop only */}
-        <div
-          className="absolute hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold select-none"
+      {/* ── Hero ── */}
+      <section style={{ position: 'relative', padding: '30px 40px 50px', textAlign: 'center' }}>
+        {/* Floating badges */}
+        <span
           style={{
-            top: '34%', left: '6%',
-            background: 'rgba(198,242,62,0.1)',
-            border: '1px solid rgba(198,242,62,0.25)',
-            color: '#C6F23E',
+            position: 'absolute',
+            left: '90px',
+            top: '30px',
+            transform: 'rotate(-9deg)',
+            fontFamily: 'var(--font-space-mono), "Space Mono", monospace',
+            fontWeight: 700,
+            fontSize: '12px',
+            background: '#C6F23E',
+            color: '#100F0C',
+            padding: '8px 14px',
+            borderRadius: '10px',
           }}
         >
           ★ no agency fees
-        </div>
-
-        <div
-          className="absolute hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold select-none"
+        </span>
+        <span
           style={{
-            top: '38%', right: '6%',
-            background: 'rgba(124,92,255,0.12)',
-            border: '1px solid rgba(124,92,255,0.28)',
-            color: '#9C7CFF',
+            position: 'absolute',
+            right: '80px',
+            top: '60px',
+            transform: 'rotate(7deg)',
+            fontFamily: 'var(--font-space-mono), "Space Mono", monospace',
+            fontWeight: 700,
+            fontSize: '12px',
+            background: '#7C5CFF',
+            color: '#fff',
+            padding: '8px 14px',
+            borderRadius: '10px',
           }}
         >
-          paid 2x ↗
-        </div>
+          paid 2x ⚡
+        </span>
 
-        {/* "NOW OPEN" — center top, visible from sm+ */}
+        {/* Status pill */}
         <div
-          className="hidden sm:flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-10 text-xs font-bold uppercase tracking-widest select-none"
           style={{
-            background: '#17150F',
-            border: '1px solid #3a3730',
-            color: '#8a8575',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: '#1C1A13',
+            border: '1px solid #2B281E',
+            borderRadius: '999px',
+            padding: '8px 16px',
+            fontFamily: 'var(--font-space-mono), "Space Mono", monospace',
+            fontSize: '12px',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            color: '#C6F23E',
           }}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C6F23E] animate-pulse flex-shrink-0" />
-          NOW OPEN TO CREATORS
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#C6F23E', display: 'inline-block' }} />
+          now open to creators
         </div>
 
         {/* Headline */}
         <h1
-          className="font-display text-center leading-[0.9] tracking-tight mb-8"
-          style={{ fontSize: 'clamp(3rem, 11vw, 8.5rem)' }}
+          style={{
+            fontFamily: 'var(--font-unbounded), Unbounded, sans-serif',
+            fontWeight: 900,
+            fontSize: '96px',
+            lineHeight: 0.94,
+            letterSpacing: '-0.03em',
+            margin: '22px 0 0',
+          }}
         >
-          SLIDE INTO<br />
-          THE{' '}
+          SLIDE
+          <br />
+          INTO THE
+          <br />
           <span
             style={{
-              background: 'linear-gradient(135deg, #C6F23E 0%, #FF5C9D 55%, #7C5CFF 100%)',
+              background: 'linear-gradient(101deg, #C6F23E, #FF5C9D, #7C5CFF)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -133,412 +124,381 @@ export default function LandingPage() {
           </span>
         </h1>
 
-        <p className="text-[#8a8575] text-base sm:text-lg max-w-lg text-center mb-10 leading-relaxed">
+        <p style={{ fontSize: '19px', lineHeight: 1.5, color: '#BDB8A8', maxWidth: '520px', margin: '24px auto 0' }}>
           The creator platform that pays twice. Swipe live brand briefs, get paid every deal, stack retail perks just for being a member.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-sm sm:max-w-none sm:justify-center">
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '28px' }}>
           <Link
             href="/sign-up/creator"
-            className="w-full sm:w-auto text-base font-bold rounded-full px-9 py-4 text-center transition-opacity hover:opacity-90"
-            style={{ background: '#C6F23E', color: '#100F0C' }}
+            style={{
+              padding: '16px 30px',
+              borderRadius: '999px',
+              background: '#C6F23E',
+              color: '#100F0C',
+              fontWeight: 700,
+              fontSize: '17px',
+              textDecoration: 'none',
+            }}
           >
             I&apos;m a Creator
           </Link>
           <Link
             href="/sign-up/brand"
-            className="w-full sm:w-auto text-base font-bold rounded-full px-9 py-4 text-center transition-all hover:bg-white/5"
-            style={{ border: '1.5px solid rgba(255,255,255,0.18)', color: 'white' }}
+            style={{
+              padding: '16px 30px',
+              borderRadius: '999px',
+              background: 'transparent',
+              border: '1.5px solid #3A362A',
+              color: '#fff',
+              fontWeight: 700,
+              fontSize: '17px',
+              textDecoration: 'none',
+            }}
           >
             I&apos;m a Brand
           </Link>
         </div>
       </section>
 
-      {/* ── TICKER ──────────────────────────────────────────────────── */}
-      <div style={{ background: '#C6F23E', overflow: 'hidden' }}>
-        <div className="animate-ticker py-3.5">
-          {[...Array(4)].map((_, i) => (
-            <span
+      {/* ── Marquee ── */}
+      <div
+        style={{
+          background: '#C6F23E',
+          color: '#100F0C',
+          padding: '14px 0',
+          overflow: 'hidden',
+          maskImage: 'linear-gradient(90deg, transparent, rgb(0,0,0) 4%, rgb(0,0,0) 96%, transparent)',
+          WebkitMaskImage: 'linear-gradient(90deg, transparent, rgb(0,0,0) 4%, rgb(0,0,0) 96%, transparent)',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            gap: 0,
+            width: 'max-content',
+            animation: 'sl-marq 18s linear infinite',
+          }}
+        >
+          {[0, 1].map((i) => (
+            <div
               key={i}
-              className="font-black text-sm uppercase tracking-widest whitespace-nowrap pr-0"
-              style={{ color: '#100F0C' }}
+              aria-hidden={i === 1 ? true : undefined}
+              style={{
+                display: 'flex',
+                gap: '28px',
+                fontFamily: 'var(--font-unbounded), Unbounded, sans-serif',
+                fontWeight: 700,
+                fontSize: '18px',
+                paddingRight: '28px',
+                whiteSpace: 'nowrap',
+              }}
             >
-              {TICKER_TEXT}
-            </span>
+              {['BEAUTY ✦', 'FOOD ✦', 'TRAVEL ✦', 'FASHION ✦', 'GAMING ✦', 'FITNESS ✦', 'MUSIC ✦'].map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
           ))}
         </div>
       </div>
 
-      {/* ── SOCIAL PROOF ────────────────────────────────────────────── */}
-      <section className="pt-24 pb-16" style={{ borderTop: '1px solid #1a1a1a' }}>
-        <div className="text-center px-6 mb-10">
-          <p className="text-[#5C584C] text-xs uppercase tracking-widest font-bold mb-6">who&apos;s already on slide</p>
-          <h2
-            className="font-display font-black leading-tight"
-            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}
-          >
-            12,400 creators.{' '}
-            <span style={{ color: '#FF5C9D' }}>one feed.</span>
-          </h2>
-        </div>
-
-        {/* Carousel */}
-        <div style={{ overflow: 'hidden' }}>
-          <div className="animate-carousel gap-4 px-4">
-            {[...BRIEF_CARDS, ...BRIEF_CARDS].map((card, i) => (
+      {/* ── Creator grid ── */}
+      <section style={{ padding: '54px 40px 20px' }}>
+        <h2 style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '36px', letterSpacing: '-0.02em', margin: '0 0 24px' }}>
+          12,400 creators.{' '}
+          <span style={{ color: '#FF5C9D' }}>one feed.</span>
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px' }}>
+          {[
+            { handle: '@maya.studio', name: 'Maya R.',  niche: 'Lifestyle', rate: '£850',  gradient: 'linear-gradient(150deg, #FF5C9D, #7C5CFF)' },
+            { handle: '@deji.eats',   name: 'Deji O.',  niche: 'Food',      rate: '£1.2k', gradient: 'linear-gradient(150deg, #4D8BFF, #C6F23E)' },
+            { handle: '@priya.k',     name: 'Priya K.', niche: 'Beauty',    rate: '£980',  gradient: 'linear-gradient(150deg, #C6F23E, #FF5C9D)' },
+            { handle: '@theo.fit',    name: 'Theo M.',  niche: 'Fitness',   rate: '£720',  gradient: 'linear-gradient(150deg, #7C5CFF, #4D8BFF)' },
+          ].map((c) => (
+            <div key={c.handle} className="sl-card-hover" style={{ background: '#1A1812', borderRadius: '20px', padding: '10px' }}>
               <div
-                key={i}
-                className="flex-shrink-0 rounded-2xl overflow-hidden"
-                style={{ width: 220 }}
-              >
-                {/* Card image area */}
-                <div
-                  className="relative flex items-end p-4"
-                  style={{ height: 140, background: card.gradient }}
-                >
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%)' }}
-                  />
-                  <span
-                    className="relative z-10 text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1 rounded-full"
-                    style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.2)' }}
-                  >
-                    {card.niche}
-                  </span>
+                className="sl-ph"
+                data-tag={c.handle}
+                style={{ height: '170px', borderRadius: '13px', background: c.gradient }}
+              />
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 4px 4px' }}>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '14px' }}>{c.name}</div>
+                  <div style={{ fontSize: '11px', color: '#8E897A' }}>{c.niche}</div>
                 </div>
-                {/* Card body */}
-                <div className="p-4" style={{ background: '#17150F', border: '1px solid #2a2a2a', borderTop: 'none' }}>
-                  <p className="font-black text-2xl" style={{ color: '#C6F23E' }}>{card.budget}</p>
-                  <p className="text-white text-sm font-semibold mt-1 truncate">{card.brand}</p>
-                  <p className="text-[#5C584C] text-xs mt-0.5">{card.days}</p>
+                <div style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontWeight: 700, fontSize: '13px', background: '#243300', color: '#C6F23E', padding: '4px 8px', borderRadius: '8px' }}>
+                  {c.rate}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS — CREATORS ─────────────────────────────────── */}
-      <section id="creators" className="px-6 py-24" style={{ borderTop: '1px solid #1a1a1a' }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: '#C6F23E' }}>
-              for creators.
-            </p>
-            <h2
-              className="font-display font-black leading-tight"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
-            >
-              from zero to paid<br />in three steps.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                n: '01',
-                title: 'build your profile',
-                body: 'Link your socials, pick your niches, upload sample content. Get verified in 72 hours. Takes ten minutes.',
-              },
-              {
-                n: '02',
-                title: 'swipe live briefs',
-                body: 'See paid briefs from real brands in your niche. Slide right on anything that fits. Pass on anything that does not.',
-              },
-              {
-                n: '03',
-                title: 'get paid + earn rewards',
-                body: 'Submit content, brand approves, payment hits your account. Retail discounts and perks from day one.',
-              },
-            ].map((step) => (
-              <div
-                key={step.n}
-                className="rounded-2xl p-7 flex flex-col gap-4"
-                style={{ background: '#0F0E0B', border: '1px solid #2a2a2a' }}
-              >
-                <span className="font-black text-xs uppercase tracking-widest" style={{ color: '#3a3730' }}>
-                  {step.n}
-                </span>
-                <h3 className="text-white font-black text-lg leading-tight">{step.title}</h3>
-                <p className="text-[#8a8575] text-sm leading-relaxed flex-1">{step.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8">
-            <Link
-              href="/sign-up/creator"
-              className="inline-flex font-bold rounded-full px-7 py-3.5 text-sm transition-opacity hover:opacity-90"
-              style={{ background: '#C6F23E', color: '#100F0C' }}
-            >
-              join as a creator →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS — BRANDS ───────────────────────────────────── */}
-      <section id="brands" className="px-6 py-24" style={{ borderTop: '1px solid #1a1a1a' }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="text-[#5C584C] text-xs font-black uppercase tracking-widest mb-3">
-              for brands.
-            </p>
-            <h2
-              className="font-display font-black leading-tight"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
-            >
-              quality UGC<br />without the agency bill.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                n: '01',
-                title: 'post a brief',
-                body: 'Set your budget, deadline, and deliverables. Brief goes live to verified creators in minutes — no calls needed.',
-              },
-              {
-                n: '02',
-                title: 'browse verified creators',
-                body: 'Search by niche, follower range, and engagement. Every creator on Slide is reviewed before going live.',
-              },
-              {
-                n: '03',
-                title: 'approve and release payment',
-                body: 'Payment sits in escrow until you approve the content. No disputes, no chasing invoices, no surprises.',
-              },
-            ].map((step) => (
-              <div
-                key={step.n}
-                className="rounded-2xl p-7 flex flex-col gap-4"
-                style={{ background: '#0F0E0B', border: '1px solid #2a2a2a' }}
-              >
-                <span className="font-black text-xs uppercase tracking-widest" style={{ color: '#3a3730' }}>
-                  {step.n}
-                </span>
-                <h3 className="text-white font-black text-lg leading-tight">{step.title}</h3>
-                <p className="text-[#8a8575] text-sm leading-relaxed flex-1">{step.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8">
-            <Link
-              href="/sign-up/brand"
-              className="inline-flex font-bold rounded-full px-7 py-3.5 text-sm transition-all hover:bg-white/5"
-              style={{ border: '1.5px solid rgba(255,255,255,0.18)', color: 'white' }}
-            >
-              post a brief →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── THE MECHANIC ────────────────────────────────────────────── */}
-      <section className="px-6 py-24 text-center" style={{ borderTop: '1px solid #1a1a1a' }}>
-        <div className="max-w-2xl mx-auto">
-          <p className="text-[#5C584C] text-xs font-black uppercase tracking-widest mb-6">the mechanic</p>
-          <h2
-            className="font-display font-black leading-tight mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}
-          >
-            swipe. it&apos;s<br />that simple.
-          </h2>
-          <p className="text-[#8a8575] text-base sm:text-lg max-w-md mx-auto mb-14 leading-relaxed">
-            Creators see a live brief card. Swipe right to Slide in, swipe left to Pass. No emails, no forms, no middlemen.
-          </p>
-
-          {/* Decorative action buttons */}
-          <div className="flex items-center justify-center gap-6 mb-14">
-            <div className="flex flex-col items-center gap-3">
-              <div
-                className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-black select-none"
-                style={{ border: '2px solid #FF5C9D', color: '#FF5C9D', background: 'rgba(255,92,157,0.06)' }}
-              >
-                ←
-              </div>
-              <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: '#FF5C9D' }}>Pass</span>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div className="flex flex-col items-center gap-3">
-              <div
-                className="w-24 h-24 rounded-full flex items-center justify-center text-3xl font-black select-none"
-                style={{ background: '#C6F23E', color: '#100F0C', boxShadow: '0 0 48px rgba(198,242,62,0.28)' }}
-              >
-                →
-              </div>
-              <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: '#C6F23E' }}>Slide</span>
+      {/* ── Problem ── */}
+      <section style={{ background: '#FF5C9D', color: '#100F0C', padding: '56px 40px', marginTop: '34px' }}>
+        <div style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          the old way is broken
+        </div>
+        <h2 style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 900, fontSize: '56px', letterSpacing: '-0.02em', margin: '10px 0 30px' }}>
+          UGC in 2026 is a MESS.
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+          {[
+            { n: '01', title: 'Slow & fragmented',   body: 'Briefs buried in DMs. Weeks of back-and-forth before a deal is agreed.', rotate: '-1.5deg' },
+            { n: '02', title: 'Quality is a gamble', body: 'Brands punt on unverified creators. Creators chase invoices that never arrive.', rotate: '1deg' },
+            { n: '03', title: 'No reason to stay',   body: 'One job, then silence. No loyalty, no perks, no platform between briefs.', rotate: '-1deg' },
+          ].map((p) => (
+            <div key={p.n} style={{ background: '#100F0C', color: '#fff', borderRadius: '20px', padding: '26px', transform: `rotate(${p.rotate})` }}>
+              <div style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontWeight: 700, color: '#C6F23E', fontSize: '14px' }}>{p.n}</div>
+              <div style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 700, fontSize: '19px', margin: '12px 0 8px' }}>{p.title}</div>
+              <div style={{ fontSize: '15px', lineHeight: 1.55, color: '#A9A491' }}>{p.body}</div>
             </div>
-          </div>
+          ))}
+        </div>
+      </section>
 
-          {/* Mock brief card */}
+      {/* ── Swipe mechanic ── */}
+      <section style={{ padding: '60px 40px', textAlign: 'center' }}>
+        <div style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#7C5CFF' }}>
+          the mechanic
+        </div>
+        <h2 style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 900, fontSize: '64px', letterSpacing: '-0.02em', margin: '10px 0 12px' }}>
+          SWIPE.<br />that&apos;s it.
+        </h2>
+        <p style={{ fontSize: '18px', lineHeight: 1.5, color: '#BDB8A8', maxWidth: '520px', margin: '0 auto 36px' }}>
+          See a live brief card. Swipe right to Slide in, left to Pass. No emails, no forms, no middlemen.
+        </p>
+
+        <div style={{ position: 'relative', height: '420px' }}>
+          {/* Back card */}
           <div
-            className="max-w-xs mx-auto rounded-2xl overflow-hidden text-left"
-            style={{ border: '1px solid #2a2a2a' }}
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '30px',
+              transform: 'translateX(-50%) rotate(8deg)',
+              width: '300px',
+              background: '#1A1812',
+              borderRadius: '24px',
+              padding: '14px',
+            }}
           >
-            <div
-              className="relative flex items-end p-5"
-              style={{
-                height: 160,
-                background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 55%, transparent 100%), linear-gradient(135deg, #1a0a2e 0%, #0f1a3e 50%, #0a2a1e 100%)',
-              }}
-            >
-              <span
-                className="text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1 rounded-full"
-                style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.15)' }}
-              >
-                Lifestyle
-              </span>
-            </div>
-            <div className="p-5" style={{ background: '#0F0E0B' }}>
-              <p className="font-black text-3xl leading-none" style={{ color: '#C6F23E' }}>£850</p>
-              <p className="text-white font-bold text-sm mt-2">Summer campaign — 3 reels</p>
-              <p className="text-[#5C584C] text-xs mt-1">Prestige London · 14 days left</p>
+            <div className="sl-ph" data-tag="@brand" style={{ height: '200px', borderRadius: '16px', background: 'linear-gradient(150deg, #7C5CFF, #4D8BFF)' }} />
+          </div>
+
+          {/* Front card */}
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '14px',
+              transform: 'translateX(-50%) rotate(-5deg)',
+              width: '320px',
+              background: '#1A1812',
+              borderRadius: '24px',
+              padding: '14px',
+              boxShadow: '0 24px 60px rgba(0,0,0,0.5)',
+            }}
+          >
+            <div className="sl-ph" data-tag="LIFESTYLE" style={{ height: '220px', borderRadius: '16px', background: 'linear-gradient(150deg, #FF5C9D, #7C5CFF)' }} />
+            <div style={{ padding: '14px 6px 4px', textAlign: 'left' }}>
+              <div style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 700, fontSize: '18px' }}>Skincare GRWM</div>
+              <div style={{ fontSize: '13px', color: '#8E897A', marginTop: '4px' }}>The Ordinary · 1 TikTok + 2 Stories</div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '14px' }}>
+                <div style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontWeight: 700, fontSize: '30px', color: '#C6F23E' }}>£850</div>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <span style={{ width: '44px', height: '44px', borderRadius: '50%', border: '2px solid #FF5C9D', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF5C9D', fontSize: '18px' }}>←</span>
+                  <span style={{ width: '54px', height: '54px', borderRadius: '50%', background: '#C6F23E', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', boxShadow: '0 0 0 6px rgba(198,242,62,0.18)' }}>→</span>
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Labels */}
+          <span style={{ position: 'absolute', left: 'calc(50% - 220px)', top: '120px', transform: 'rotate(-12deg)', fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontWeight: 700, fontSize: '13px', color: '#FF5C9D', border: '2px solid #FF5C9D', padding: '6px 12px', borderRadius: '8px' }}>
+            PASS
+          </span>
+          <span style={{ position: 'absolute', left: 'calc(50% + 150px)', top: '90px', transform: 'rotate(11deg)', fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontWeight: 700, fontSize: '13px', color: '#100F0C', background: '#C6F23E', padding: '6px 12px', borderRadius: '8px' }}>
+            SLIDE ✓
+          </span>
         </div>
       </section>
 
-      {/* ── REWARDS ─────────────────────────────────────────────────── */}
-      <section id="rewards" className="px-6 py-24" style={{ borderTop: '1px solid #1a1a1a' }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: '#C6F23E' }}>
-              rewards wallet
-            </p>
-            <h2
-              className="font-display font-black leading-tight"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
-            >
-              membership that pays<br />between briefs.
+      {/* ── How it works ── */}
+      <section style={{ background: '#C6F23E', color: '#100F0C', padding: '56px 40px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '46px' }}>
+          {/* Creators */}
+          <div>
+            <div style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>for creators</div>
+            <h2 style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '34px', letterSpacing: '-0.02em', margin: '8px 0 22px', lineHeight: 1 }}>
+              zero → paid<br />in 3 steps
             </h2>
-            <p className="text-[#8a8575] text-base mt-4 max-w-lg leading-relaxed">
-              Every Slide creator gets access to an exclusive rewards wallet. Retail discounts and brand perks unlocked the moment you join, upgraded as you level up.
-            </p>
-          </div>
-
-          {/* Reward cards row */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {REWARD_CARDS.map((r) => (
-              <div
-                key={r.brand}
-                className="relative rounded-2xl overflow-hidden"
-                style={{ background: r.gradient, minHeight: 120 }}
-              >
-                <div
-                  className="absolute inset-0"
-                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)' }}
-                />
-                <div className="relative z-10 p-5 flex flex-col justify-between h-full" style={{ minHeight: 120 }}>
-                  <span
-                    className="self-start text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
-                    style={{ background: 'rgba(0,0,0,0.35)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
-                  >
-                    Exclusive
-                  </span>
-                  <div className="mt-4">
-                    <p className="text-white font-black text-base leading-tight">{r.offer}</p>
-                    <p className="text-white/60 text-xs mt-1">{r.brand}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {[
+                { n: '1', title: 'Build your profile', body: 'Link socials, pick niches, get verified in ten minutes.' },
+                { n: '2', title: 'Swipe live briefs',  body: 'Paid briefs from real brands in your niche. Slide right on the fits.' },
+                { n: '3', title: 'Get paid + rewards', body: 'Brand approves, payment lands, retail perks stack up.' },
+              ].map((s) => (
+                <div key={s.n} style={{ display: 'flex', gap: '14px' }}>
+                  <span style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '22px' }}>{s.n}</span>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '16px' }}>{s.title}</div>
+                    <div style={{ fontSize: '14px', color: '#2C3A00' }}>{s.body}</div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <Link
+              href="/sign-up/creator"
+              style={{ display: 'inline-block', marginTop: '22px', padding: '13px 24px', borderRadius: '999px', background: '#100F0C', color: '#C6F23E', fontWeight: 700, textDecoration: 'none' }}
+            >
+              Join as a creator →
+            </Link>
           </div>
 
-          {/* Tier ladder */}
-          <div className="flex flex-wrap gap-2 mt-8">
-            {[
-              { label: 'Rising',     colour: '#8a8575' },
-              { label: 'Verified',   colour: '#C6F23E' },
-              { label: 'Elite',      colour: '#f59e0b' },
-              { label: 'Ambassador', colour: '#a855f7' },
-            ].map(({ label, colour }) => (
-              <span
-                key={label}
-                className="text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full"
-                style={{ color: colour, background: `${colour}18`, border: `1px solid ${colour}33` }}
-              >
-                {label}
-              </span>
-            ))}
+          {/* Brands */}
+          <div>
+            <div style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>for brands</div>
+            <h2 style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '34px', letterSpacing: '-0.02em', margin: '8px 0 22px', lineHeight: 1 }}>
+              quality UGC,<br />no agency bill
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {[
+                { n: '1', title: 'Post a brief',            body: 'Set budget, deadline, deliverables — live in minutes.' },
+                { n: '2', title: 'Browse verified creators', body: 'Filter by niche, reach and engagement. All reviewed.' },
+                { n: '3', title: 'Approve + release',        body: 'Escrow holds payment until you approve. No surprises.' },
+              ].map((s) => (
+                <div key={s.n} style={{ display: 'flex', gap: '14px' }}>
+                  <span style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '22px' }}>{s.n}</span>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '16px' }}>{s.title}</div>
+                    <div style={{ fontSize: '14px', color: '#2C3A00' }}>{s.body}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Link
+              href="/sign-up/brand"
+              style={{ display: 'inline-block', marginTop: '22px', padding: '13px 24px', borderRadius: '999px', background: '#100F0C', color: '#fff', fontWeight: 700, textDecoration: 'none' }}
+            >
+              Post a brief →
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ── DUAL CTA ────────────────────────────────────────────────── */}
-      <section className="px-6 py-24" style={{ borderTop: '1px solid #1a1a1a' }}>
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[#5C584C] text-xs font-black uppercase tracking-widest text-center mb-3">ready when you are</p>
-          <h2
-            className="font-display font-black text-center mb-12"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+      {/* ── Rewards wallet ── */}
+      <section style={{ padding: '60px 40px' }}>
+        <div style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FF5C9D' }}>
+          rewards wallet
+        </div>
+        <h2 style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '44px', letterSpacing: '-0.02em', margin: '8px 0' }}>
+          pays between briefs.
+        </h2>
+        <p style={{ fontSize: '16px', lineHeight: 1.5, color: '#BDB8A8', maxWidth: '560px', margin: '0 0 28px' }}>
+          Every Slide creator unlocks a rewards wallet — retail discounts, dining offers and brand perks, upgraded as you level up.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px' }}>
+          {[
+            { title: '20% off everything', brand: 'ASOS',        color: '#FF7AB0', rotate: '-1.5deg' },
+            { title: '2 for 1 tickets',    brand: 'Cineworld',   color: '#6FA8FF', rotate: '1deg' },
+            { title: '20% off stays',      brand: 'Booking.com', color: '#C6F23E', rotate: '-1deg' },
+            { title: '15% off in-store',   brand: 'Selfridges',  color: '#A98BFF', rotate: '1.5deg' },
+          ].map((r) => (
+            <div key={r.brand} style={{ background: '#1A1812', border: '1px solid #2B281E', borderRadius: '18px', padding: '20px', transform: `rotate(${r.rotate})` }}>
+              <span style={{ fontFamily: 'var(--font-space-mono), "Space Mono", monospace', fontSize: '10px', background: '#243300', color: '#C6F23E', padding: '3px 8px', borderRadius: '6px' }}>EXCLUSIVE</span>
+              <div style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 700, fontSize: '19px', color: r.color, margin: '14px 0 4px' }}>{r.title}</div>
+              <div style={{ fontSize: '12px', color: '#8E897A' }}>{r.brand}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '20px' }}>
+          <span style={{ padding: '8px 16px', borderRadius: '999px', background: '#1C1A13', border: '1px solid #2B281E', fontWeight: 600, fontSize: '13px', color: '#BDB8A8' }}>Rising</span>
+          <span style={{ padding: '8px 16px', borderRadius: '999px', background: '#243300', color: '#C6F23E', fontWeight: 700, fontSize: '13px' }}>Verified</span>
+          <span style={{ padding: '8px 16px', borderRadius: '999px', background: '#3A0F24', color: '#FF7AB0', fontWeight: 700, fontSize: '13px' }}>Elite</span>
+          <span style={{ padding: '8px 16px', borderRadius: '999px', background: '#241A45', color: '#A98BFF', fontWeight: 700, fontSize: '13px' }}>Ambassador</span>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section style={{ background: '#7C5CFF', padding: '64px 40px', textAlign: 'center' }}>
+        <h2 style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 900, fontSize: '64px', letterSpacing: '-0.03em', color: '#fff', margin: '0 0 24px' }}>
+          ready to slide?
+        </h2>
+        <div style={{ display: 'flex', gap: '14px', justifyContent: 'center' }}>
+          <Link
+            href="/sign-up/creator"
+            style={{ padding: '16px 32px', borderRadius: '999px', background: '#C6F23E', color: '#100F0C', fontWeight: 700, fontSize: '17px', textDecoration: 'none' }}
           >
-            two sides. one platform.
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {/* Creator */}
-            <div
-              className="rounded-2xl p-8 flex flex-col"
-              style={{ background: '#0F0E0B', border: '1px solid rgba(198,242,62,0.15)' }}
-            >
-              <span className="text-xs font-black uppercase tracking-widest mb-5" style={{ color: '#C6F23E' }}>
-                creators
-              </span>
-              <h3 className="font-display text-3xl font-black mb-3">start earning →</h3>
-              <p className="text-[#8a8575] text-sm leading-relaxed flex-1 mb-8">
-                Join free, get verified, and start swiping briefs from real brands. Payment in escrow, rewards from day one.
-              </p>
-              <Link
-                href="/sign-up/creator"
-                className="text-center font-bold rounded-full px-6 py-4 text-sm transition-opacity hover:opacity-90"
-                style={{ background: '#C6F23E', color: '#100F0C' }}
-              >
-                Join as a creator
-              </Link>
-            </div>
-
-            {/* Brand */}
-            <div
-              className="rounded-2xl p-8 flex flex-col"
-              style={{ background: '#0F0E0B', border: '1px solid #2a2a2a' }}
-            >
-              <span className="text-[#5C584C] text-xs font-black uppercase tracking-widest mb-5">
-                brands and agencies
-              </span>
-              <h3 className="font-display text-3xl font-black mb-3">find creators →</h3>
-              <p className="text-[#8a8575] text-sm leading-relaxed flex-1 mb-8">
-                Post a brief in minutes. Browse verified creators by niche, audience, and tier. Escrow payments mean zero risk.
-              </p>
-              <Link
-                href="/sign-up/brand"
-                className="text-center font-bold rounded-full px-6 py-4 text-sm transition-all hover:bg-white/5"
-                style={{ border: '1.5px solid rgba(255,255,255,0.18)', color: 'white' }}
-              >
-                Post a brief
-              </Link>
-            </div>
-          </div>
+            Join as a creator
+          </Link>
+          <Link
+            href="/sign-up/brand"
+            style={{ padding: '16px 32px', borderRadius: '999px', background: '#100F0C', color: '#fff', fontWeight: 700, fontSize: '17px', textDecoration: 'none' }}
+          >
+            Post a brief
+          </Link>
         </div>
       </section>
 
-      {/* ── FOOTER ──────────────────────────────────────────────────── */}
-      <footer className="px-6 py-10" style={{ borderTop: '1px solid #1a1a1a' }}>
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-display font-black text-xl text-white">
-            slide<span style={{ color: '#C6F23E' }}>.</span>
-          </span>
-          <p className="text-[#5C584C] text-sm">A Make Agency product</p>
-          <p className="text-[#5C584C] text-sm">
-            &copy; {new Date().getFullYear()} Slide. All rights reserved.
-          </p>
+      {/* ── Footer ── */}
+      <footer style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '28px 40px' }}>
+        <div style={{ fontFamily: 'var(--font-unbounded), Unbounded, sans-serif', fontWeight: 800, fontSize: '20px' }}>
+          slide<span style={{ color: '#C6F23E' }}>.</span>
         </div>
+        <div style={{ fontSize: '13px', color: '#6B6657', fontFamily: 'var(--font-space-mono), "Space Mono", monospace' }}>A Make Agency product</div>
+        <div style={{ fontSize: '13px', color: '#6B6657', fontFamily: 'var(--font-space-mono), "Space Mono", monospace' }}>© 2026 Slide</div>
       </footer>
 
-    </div>
+      {/* ── Keyframes + shared styles ── */}
+      <style>{`
+        @keyframes sl-marq {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+
+        .sl-card-hover {
+          transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .sl-card-hover:hover {
+          transform: translateY(-4px);
+        }
+
+        .sl-ph {
+          position: relative;
+          overflow: hidden;
+        }
+        .sl-ph::after {
+          content: attr(data-tag);
+          position: absolute;
+          left: 10px;
+          bottom: 9px;
+          font-family: 'Space Mono', monospace;
+          font-size: 11px;
+          letter-spacing: 0.02em;
+          color: rgba(255,255,255,0.92);
+          background: rgba(0,0,0,0.28);
+          padding: 3px 7px;
+          border-radius: 7px;
+          backdrop-filter: blur(4px);
+        }
+
+        @media (max-width: 768px) {
+          h1 { font-size: 56px !important; }
+          h2 { font-size: 32px !important; }
+          .sl-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+          .sl-grid-3 { grid-template-columns: 1fr !important; }
+          .sl-grid-2 { grid-template-columns: 1fr !important; }
+          nav { padding: 16px 20px !important; }
+          section { padding-left: 20px !important; padding-right: 20px !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .sl-marq { animation: none !important; }
+          .sl-card-hover { transition: none !important; }
+        }
+      `}</style>
+    </main>
   )
 }

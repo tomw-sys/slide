@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Unbounded } from 'next/font/google'
+import { Inter, Unbounded, Space_Grotesk, Space_Mono } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const unbounded = Unbounded({ subsets: ['latin'], weight: ['900'], variable: '--font-unbounded' })
+const unbounded = Unbounded({ subsets: ['latin'], weight: ['400', '600', '700', '800', '900'], variable: '--font-unbounded' })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-space-grotesk' })
+const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-space-mono' })
 
 export const metadata: Metadata = {
   title: 'Slide',
@@ -22,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${unbounded.variable}`}>
+    <html lang="en" className={`${inter.variable} ${unbounded.variable} ${spaceGrotesk.variable} ${spaceMono.variable}`}>
       <body className="antialiased font-sans" style={{ color: '#FBF8F1' }}>
         {/* Textured background: radial gradient vignette + SVG grain overlay */}
         <div className="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
