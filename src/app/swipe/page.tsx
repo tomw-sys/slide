@@ -54,6 +54,8 @@ export default async function SwipePage() {
     console.error('[swipe] briefs query error:', briefsError.message)
   }
 
+  console.log('[swipe] briefs[0]:', JSON.stringify(briefRows?.[0] ?? null, null, 2))
+
   type ProfileJoin = {
     display_name: string | null
     brand_profiles: { company_name: string | null } | null

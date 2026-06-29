@@ -49,7 +49,7 @@ function getNicheGradient(niches: string[] | null): string {
 function getCardBackground(brief: Brief): React.CSSProperties {
   if (brief.image_url) {
     return {
-      backgroundImage: `url(${brief.image_url})`,
+      backgroundImage: `url("${brief.image_url}")`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }
