@@ -131,6 +131,16 @@ export default async function CreatorDashboardPage() {
             <p className="text-white text-3xl font-black">0</p>
           </div>
         </div>
+        <Link
+          href="/dashboard/earnings"
+          className="flex items-center justify-end gap-1 mt-3 text-[#C6F23E] text-xs font-semibold hover:underline tap-scale"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
+        >
+          View earnings
+          <svg viewBox="0 0 16 16" fill="currentColor" className="w-3.5 h-3.5">
+            <path fillRule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.25a.75.75 0 0 1 0 1.08l-4.5 4.25a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clipRule="evenodd" />
+          </svg>
+        </Link>
       </div>
 
       {/* Get verified banner */}

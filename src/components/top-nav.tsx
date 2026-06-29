@@ -54,6 +54,17 @@ const CREATOR_LINKS = [
     ),
   },
   {
+    label: 'Earnings',
+    href: '/dashboard/earnings',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" stroke="currentColor">
+        <rect x="2" y="6" width="20" height="14" rx="2"/>
+        <path d="M16 14a1 1 0 1 0 2 0 1 1 0 0 0-2 0" fill="currentColor" stroke="none"/>
+        <path d="M2 10h20"/>
+      </svg>
+    ),
+  },
+  {
     label: 'Rewards',
     href: '/rewards',
     icon: (
