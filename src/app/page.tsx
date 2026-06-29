@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#151515] text-white font-sans">
+    <div className="min-h-screen bg-[#100F0C] text-white font-sans">
 
       {/* ─── HERO ─────────────────────────────────────────────────── */}
       <section className="relative flex flex-col min-h-screen px-6 pt-8 pb-20 overflow-hidden">
@@ -12,23 +12,23 @@ export default function LandingPage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at 50% 0%, rgba(30,226,49,0.07) 0%, transparent 65%)',
+              'radial-gradient(ellipse at 50% 0%, rgba(198,242,62,0.07) 0%, transparent 65%)',
           }}
         />
 
         {/* Nav */}
         <nav className="relative z-10 flex items-center justify-between max-w-5xl mx-auto w-full">
-          <span className="text-white font-black text-2xl tracking-tight">Slide.</span>
+          <span className="font-display font-black text-2xl tracking-tight text-white">Slide<span className="text-[#C6F23E]">.</span></span>
           <div className="flex items-center gap-3">
             <Link
               href="/sign-in"
-              className="text-[#a3a3a3] text-sm font-medium hover:text-white transition-colors"
+              className="text-[#8a8575] text-sm font-medium hover:text-white transition-colors"
             >
               Sign in
             </Link>
             <Link
               href="/sign-up"
-              className="bg-[#1c1c1c] border border-[#2a2a2a] text-white text-sm font-medium rounded-xl px-4 py-2 hover:border-[#3a3a3a] transition-colors"
+              className="bg-[#17150F] border border-[#3a3730] text-white text-sm font-medium rounded-xl px-4 py-2 hover:border-[#4a4640] transition-colors"
             >
               Get started
             </Link>
@@ -38,9 +38,9 @@ export default function LandingPage() {
         {/* Hero content */}
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center max-w-4xl mx-auto w-full mt-16 md:mt-0">
           {/* Label */}
-          <div className="inline-flex items-center gap-2 bg-[#1ee231]/10 border border-[#1ee231]/20 rounded-full px-4 py-1.5 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1ee231] animate-pulse" />
-            <span className="text-[#1ee231] text-xs font-semibold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 bg-[#C6F23E]/10 border border-[#C6F23E]/20 rounded-full px-4 py-1.5 mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C6F23E] animate-pulse" />
+            <span className="text-[#C6F23E] text-xs font-semibold uppercase tracking-widest">
               Now open to creators
             </span>
           </div>
@@ -48,10 +48,10 @@ export default function LandingPage() {
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.05] tracking-tight mb-6">
             Slide into
             <br />
-            <span className="text-[#1ee231]">the feed.</span>
+            <span className="text-[#C6F23E]">the feed.</span>
           </h1>
 
-          <p className="text-[#d4d4d4] text-lg sm:text-xl max-w-xl mb-10 leading-relaxed">
+          <p className="text-[#F4EFE3] text-lg sm:text-xl max-w-xl mb-10 leading-relaxed">
             The creator platform that pays twice. Swipe live brand briefs, get paid for every deal,
             and earn retail rewards just for being a member.
           </p>
@@ -59,7 +59,7 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Link
               href="/sign-up/creator"
-              className="w-full sm:w-auto bg-[#1ee231] text-[#151515] font-bold text-base rounded-xl px-8 py-4 hover:bg-[#17c029] transition-colors"
+              className="w-full sm:w-auto bg-[#C6F23E] text-[#100F0C] font-bold text-base rounded-xl px-8 py-4 hover:bg-[#ADDA38] transition-colors"
             >
               I&apos;m a Creator
             </Link>
@@ -71,7 +71,7 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          <p className="text-[#a3a3a3] text-xs mt-6">
+          <p className="text-[#8a8575] text-xs mt-6">
             Free to join. No agency fees.
           </p>
         </div>
@@ -80,15 +80,15 @@ export default function LandingPage() {
         <div className="relative z-10 flex justify-center mt-12">
           <div className="flex flex-col items-center gap-2 opacity-40">
             <div className="w-px h-8 bg-white/30" />
-            <span className="text-[10px] uppercase tracking-widest text-[#a3a3a3]">Scroll</span>
+            <span className="text-[10px] uppercase tracking-widest text-[#8a8575]">Scroll</span>
           </div>
         </div>
       </section>
 
       {/* ─── PROBLEM STRIP ────────────────────────────────────────── */}
-      <section className="px-6 py-20 border-t border-[#2a2a2a]">
+      <section className="px-6 py-20 border-t border-[#3a3730]">
         <div className="max-w-5xl mx-auto">
-          <p className="text-[#a3a3a3] text-xs uppercase tracking-widest font-semibold text-center mb-3">
+          <p className="text-[#8a8575] text-xs uppercase tracking-widest font-semibold text-center mb-3">
             The old way is broken
           </p>
           <h2 className="text-white text-3xl sm:text-4xl font-black text-center mb-12">
@@ -116,13 +116,13 @@ export default function LandingPage() {
             ].map((card) => (
               <div
                 key={card.n}
-                className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6"
+                className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6"
               >
-                <span className="text-[#1ee231] text-xs font-black uppercase tracking-widest">
+                <span className="text-[#C6F23E] text-xs font-black uppercase tracking-widest">
                   {card.n}
                 </span>
                 <h3 className="text-white font-bold text-lg mt-2 mb-2">{card.title}</h3>
-                <p className="text-[#a3a3a3] text-sm leading-relaxed">{card.body}</p>
+                <p className="text-[#8a8575] text-sm leading-relaxed">{card.body}</p>
               </div>
             ))}
           </div>
@@ -130,15 +130,15 @@ export default function LandingPage() {
       </section>
 
       {/* ─── THE MECHANIC ─────────────────────────────────────────── */}
-      <section className="px-6 py-20 border-t border-[#2a2a2a]">
+      <section className="px-6 py-20 border-t border-[#3a3730]">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="text-[#a3a3a3] text-xs uppercase tracking-widest font-semibold mb-3">
+          <p className="text-[#8a8575] text-xs uppercase tracking-widest font-semibold mb-3">
             The mechanic
           </p>
           <h2 className="text-white text-4xl sm:text-5xl font-black mb-4">
             Swipe. It&apos;s that simple.
           </h2>
-          <p className="text-[#d4d4d4] text-base sm:text-lg max-w-xl mx-auto mb-12 leading-relaxed">
+          <p className="text-[#F4EFE3] text-base sm:text-lg max-w-xl mx-auto mb-12 leading-relaxed">
             Creators see a live brief card. Swipe right to Slide in, swipe left to Pass.
             No emails, no forms, no agency middlemen.
           </p>
@@ -146,29 +146,29 @@ export default function LandingPage() {
           {/* Visual pill buttons — decorative */}
           <div className="flex items-center justify-center gap-6 mb-12">
             <div className="flex flex-col items-center gap-2">
-              <div className="w-20 h-20 rounded-full bg-[#1c1c1c] border-2 border-[#ef4444]/40 flex items-center justify-center text-[#ef4444] text-3xl select-none">
+              <div className="w-20 h-20 rounded-full bg-[#17150F] border-2 border-[#ef4444]/40 flex items-center justify-center text-[#ef4444] text-3xl select-none">
                 ←
               </div>
-              <span className="text-[#a3a3a3] text-[10px] uppercase tracking-widest font-semibold">
+              <span className="text-[#8a8575] text-[10px] uppercase tracking-widest font-semibold">
                 Pass
               </span>
             </div>
 
             <div className="flex flex-col items-center gap-2">
               <div
-                className="w-24 h-24 rounded-full bg-[#1ee231] flex items-center justify-center text-[#151515] text-4xl select-none"
-                style={{ boxShadow: '0 0 40px rgba(30,226,49,0.25)' }}
+                className="w-24 h-24 rounded-full bg-[#C6F23E] flex items-center justify-center text-[#100F0C] text-4xl select-none"
+                style={{ boxShadow: '0 0 40px rgba(198,242,62,0.25)' }}
               >
                 →
               </div>
-              <span className="text-[#1ee231] text-[10px] uppercase tracking-widest font-semibold">
+              <span className="text-[#C6F23E] text-[10px] uppercase tracking-widest font-semibold">
                 Slide
               </span>
             </div>
           </div>
 
           {/* Brief card mock */}
-          <div className="max-w-xs mx-auto bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl overflow-hidden">
+          <div className="max-w-xs mx-auto bg-[#17150F] border border-[#3a3730] rounded-xl overflow-hidden">
             <div
               className="h-36 flex items-end p-4"
               style={{
@@ -183,19 +183,19 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="p-4">
-              <p className="text-[#1ee231] text-2xl font-black">£850</p>
+              <p className="text-[#C6F23E] text-2xl font-black">£850</p>
               <p className="text-white font-bold text-sm mt-1">Summer campaign — 3 reels</p>
-              <p className="text-[#a3a3a3] text-xs mt-1">Prestige London · 14 days left</p>
+              <p className="text-[#8a8575] text-xs mt-1">Prestige London · 14 days left</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ─── HOW IT WORKS — CREATORS ──────────────────────────────── */}
-      <section className="px-6 py-20 border-t border-[#2a2a2a]">
+      <section className="px-6 py-20 border-t border-[#3a3730]">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
-            <p className="text-[#1ee231] text-xs uppercase tracking-widest font-semibold mb-2">
+            <p className="text-[#C6F23E] text-xs uppercase tracking-widest font-semibold mb-2">
               For creators
             </p>
             <h2 className="text-white text-3xl sm:text-4xl font-black">
@@ -225,12 +225,12 @@ export default function LandingPage() {
               },
             ].map((step) => (
               <div key={step.n} className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#1ee231]/10 border border-[#1ee231]/20 flex items-center justify-center">
-                  <span className="text-[#1ee231] font-black text-sm">{step.n}</span>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#C6F23E]/10 border border-[#C6F23E]/20 flex items-center justify-center">
+                  <span className="text-[#C6F23E] font-black text-sm">{step.n}</span>
                 </div>
                 <div>
                   <h3 className="text-white font-bold text-base mb-1.5">{step.title}</h3>
-                  <p className="text-[#a3a3a3] text-sm leading-relaxed">{step.body}</p>
+                  <p className="text-[#8a8575] text-sm leading-relaxed">{step.body}</p>
                 </div>
               </div>
             ))}
@@ -239,7 +239,7 @@ export default function LandingPage() {
           <div className="mt-10">
             <Link
               href="/sign-up/creator"
-              className="inline-flex bg-[#1ee231] text-[#151515] font-bold rounded-xl px-6 py-3 text-sm hover:bg-[#17c029] transition-colors"
+              className="inline-flex bg-[#C6F23E] text-[#100F0C] font-bold rounded-xl px-6 py-3 text-sm hover:bg-[#ADDA38] transition-colors"
             >
               Join as a creator
             </Link>
@@ -248,10 +248,10 @@ export default function LandingPage() {
       </section>
 
       {/* ─── HOW IT WORKS — BRANDS ────────────────────────────────── */}
-      <section className="px-6 py-20 border-t border-[#2a2a2a]">
+      <section className="px-6 py-20 border-t border-[#3a3730]">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
-            <p className="text-[#a3a3a3] text-xs uppercase tracking-widest font-semibold mb-2">
+            <p className="text-[#8a8575] text-xs uppercase tracking-widest font-semibold mb-2">
               For brands
             </p>
             <h2 className="text-white text-3xl sm:text-4xl font-black">
@@ -281,12 +281,12 @@ export default function LandingPage() {
               },
             ].map((step) => (
               <div key={step.n} className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-[#2a2a2a] flex items-center justify-center">
-                  <span className="text-[#d4d4d4] font-black text-sm">{step.n}</span>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-[#3a3730] flex items-center justify-center">
+                  <span className="text-[#F4EFE3] font-black text-sm">{step.n}</span>
                 </div>
                 <div>
                   <h3 className="text-white font-bold text-base mb-1.5">{step.title}</h3>
-                  <p className="text-[#a3a3a3] text-sm leading-relaxed">{step.body}</p>
+                  <p className="text-[#8a8575] text-sm leading-relaxed">{step.body}</p>
                 </div>
               </div>
             ))}
@@ -304,17 +304,17 @@ export default function LandingPage() {
       </section>
 
       {/* ─── REWARDS WALLET ───────────────────────────────────────── */}
-      <section className="px-6 py-20 border-t border-[#2a2a2a]">
+      <section className="px-6 py-20 border-t border-[#3a3730]">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-[#1ee231] text-xs uppercase tracking-widest font-semibold mb-3">
+              <p className="text-[#C6F23E] text-xs uppercase tracking-widest font-semibold mb-3">
                 Rewards wallet
               </p>
               <h2 className="text-white text-3xl sm:text-4xl font-black mb-4">
                 Membership that pays between briefs.
               </h2>
-              <p className="text-[#a3a3a3] text-base leading-relaxed mb-6">
+              <p className="text-[#8a8575] text-base leading-relaxed mb-6">
                 Every Slide creator gets access to an exclusive rewards wallet. Retail discounts,
                 dining offers, and brand perks — unlocked the moment you join, upgraded as you
                 level up.
@@ -325,9 +325,9 @@ export default function LandingPage() {
                     key={tier}
                     className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full border"
                     style={{
-                      color: ['#a3a3a3', '#1ee231', '#f59e0b', '#a855f7'][i],
-                      borderColor: ['#a3a3a3', '#1ee231', '#f59e0b', '#a855f7'][i] + '33',
-                      backgroundColor: ['#a3a3a3', '#1ee231', '#f59e0b', '#a855f7'][i] + '1a',
+                      color: ['#8a8575', '#C6F23E', '#f59e0b', '#a855f7'][i],
+                      borderColor: ['#8a8575', '#C6F23E', '#f59e0b', '#a855f7'][i] + '33',
+                      backgroundColor: ['#8a8575', '#C6F23E', '#f59e0b', '#a855f7'][i] + '1a',
                     }}
                   >
                     {tier}
@@ -341,16 +341,16 @@ export default function LandingPage() {
               {[
                 { brand: 'ASOS', offer: '20% off everything', colour: '#f59e0b' },
                 { brand: 'Cineworld', offer: '2 for 1 tickets', colour: '#3b82f6' },
-                { brand: 'Booking.com', offer: '20% off stays', colour: '#1ee231' },
+                { brand: 'Booking.com', offer: '20% off stays', colour: '#C6F23E' },
                 { brand: 'Selfridges', offer: '15% off in-store', colour: '#a855f7' },
               ].map((r) => (
                 <div
                   key={r.brand}
-                  className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-4 flex flex-col justify-between min-h-[100px]"
+                  className="bg-[#17150F] border border-[#3a3730] rounded-xl p-4 flex flex-col justify-between min-h-[100px]"
                 >
                   <span
                     className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full self-start"
-                    style={{ color: '#151515', backgroundColor: '#1ee231' }}
+                    style={{ color: '#100F0C', backgroundColor: '#C6F23E' }}
                   >
                     Exclusive
                   </span>
@@ -361,7 +361,7 @@ export default function LandingPage() {
                     >
                       {r.offer}
                     </p>
-                    <p className="text-[#a3a3a3] text-xs mt-1">{r.brand}</p>
+                    <p className="text-[#8a8575] text-xs mt-1">{r.brand}</p>
                   </div>
                 </div>
               ))}
@@ -371,7 +371,7 @@ export default function LandingPage() {
       </section>
 
       {/* ─── DUAL CTA ─────────────────────────────────────────────── */}
-      <section className="px-6 py-20 border-t border-[#2a2a2a]">
+      <section className="px-6 py-20 border-t border-[#3a3730]">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-white text-3xl sm:text-4xl font-black text-center mb-12">
             Ready to get started?
@@ -379,30 +379,30 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Creator card */}
-            <div className="bg-[#1c1c1c] border border-[#1ee231]/20 rounded-xl p-8 flex flex-col">
-              <span className="text-[#1ee231] text-xs font-semibold uppercase tracking-widest mb-4">
+            <div className="bg-[#17150F] border border-[#C6F23E]/20 rounded-xl p-8 flex flex-col">
+              <span className="text-[#C6F23E] text-xs font-semibold uppercase tracking-widest mb-4">
                 Creators
               </span>
               <h3 className="text-white text-2xl font-black mb-2">Start earning.</h3>
-              <p className="text-[#a3a3a3] text-sm leading-relaxed flex-1 mb-6">
+              <p className="text-[#8a8575] text-sm leading-relaxed flex-1 mb-6">
                 Join for free, get verified, and start swiping live briefs from real brands.
                 Payment in escrow, rewards from day one.
               </p>
               <Link
                 href="/sign-up/creator"
-                className="bg-[#1ee231] text-[#151515] font-bold rounded-xl px-6 py-3.5 text-sm text-center hover:bg-[#17c029] transition-colors"
+                className="bg-[#C6F23E] text-[#100F0C] font-bold rounded-xl px-6 py-3.5 text-sm text-center hover:bg-[#ADDA38] transition-colors"
               >
                 Join as a creator
               </Link>
             </div>
 
             {/* Brand card */}
-            <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-8 flex flex-col">
-              <span className="text-[#a3a3a3] text-xs font-semibold uppercase tracking-widest mb-4">
+            <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-8 flex flex-col">
+              <span className="text-[#8a8575] text-xs font-semibold uppercase tracking-widest mb-4">
                 Brands and agencies
               </span>
               <h3 className="text-white text-2xl font-black mb-2">Find creators.</h3>
-              <p className="text-[#a3a3a3] text-sm leading-relaxed flex-1 mb-6">
+              <p className="text-[#8a8575] text-sm leading-relaxed flex-1 mb-6">
                 Post a brief in minutes. Browse verified creators by niche, audience, and tier.
                 Escrow payments mean no risk, no wasted budget.
               </p>
@@ -418,11 +418,11 @@ export default function LandingPage() {
       </section>
 
       {/* ─── FOOTER ───────────────────────────────────────────────── */}
-      <footer className="border-t border-[#2a2a2a] px-6 py-10">
+      <footer className="border-t border-[#3a3730] px-6 py-10">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-white font-black text-xl tracking-tight">Slide.</span>
-          <p className="text-[#a3a3a3] text-sm">A Make Agency product</p>
-          <p className="text-[#a3a3a3] text-sm">
+          <span className="font-display font-black text-xl tracking-tight text-white">Slide<span className="text-[#C6F23E]">.</span></span>
+          <p className="text-[#8a8575] text-sm">A Make Agency product</p>
+          <p className="text-[#8a8575] text-sm">
             &copy; {new Date().getFullYear()} Slide. All rights reserved.
           </p>
         </div>

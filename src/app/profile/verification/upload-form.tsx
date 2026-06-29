@@ -101,24 +101,24 @@ export function UploadForm({
 
   if (done || verificationStatus === 'pending') {
     return (
-      <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6">
+      <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6">
         <div className="flex items-start gap-3">
-          <span className="text-[#1ee231] text-xl mt-0.5">✓</span>
+          <span className="text-[#C6F23E] text-xl mt-0.5">✓</span>
           <div>
             <p className="text-white font-semibold mb-1">Samples submitted</p>
-            <p className="text-[#a3a3a3] text-sm">
+            <p className="text-[#8a8575] text-sm">
               Your videos are with our team. We review all submissions within 3 working days and will email you the outcome.
             </p>
             {existingUrls && existingUrls.length > 0 && (
               <div className="mt-4 space-y-1.5">
-                <p className="text-[#a3a3a3] text-xs uppercase tracking-wider mb-2">Submitted videos</p>
+                <p className="text-[#8a8575] text-xs uppercase tracking-wider mb-2">Submitted videos</p>
                 {existingUrls.map((url, i) => (
                   <a
                     key={i}
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-[#1ee231] text-sm hover:underline truncate"
+                    className="block text-[#C6F23E] text-sm hover:underline truncate"
                   >
                     Video {i + 1}
                   </a>
@@ -130,7 +130,7 @@ export function UploadForm({
         {verificationStatus === 'pending' && (
           <button
             onClick={() => setDone(false)}
-            className="mt-5 text-sm text-[#a3a3a3] hover:text-white transition-colors"
+            className="mt-5 text-sm text-[#8a8575] hover:text-white transition-colors"
           >
             Upload new videos instead
           </button>
@@ -141,9 +141,9 @@ export function UploadForm({
 
   if (verificationStatus === 'approved') {
     return (
-      <div className="bg-[#1ee231]/10 border border-[#1ee231]/30 rounded-xl p-6">
-        <p className="text-[#1ee231] font-semibold mb-1">Verified</p>
-        <p className="text-[#d4d4d4] text-sm">Your profile is verified. Your verified badge is visible to brands browsing the creator directory.</p>
+      <div className="bg-[#C6F23E]/10 border border-[#C6F23E]/30 rounded-xl p-6">
+        <p className="text-[#C6F23E] font-semibold mb-1">Verified</p>
+        <p className="text-[#F4EFE3] text-sm">Your profile is verified. Your verified badge is visible to brands browsing the creator directory.</p>
       </div>
     )
   }
@@ -153,7 +153,7 @@ export function UploadForm({
       <div className="flex flex-col gap-6">
         <div className="bg-[#ef4444]/10 border border-[#ef4444]/30 rounded-xl p-6">
           <p className="text-[#ef4444] font-semibold mb-1">Not approved this time</p>
-          <p className="text-[#d4d4d4] text-sm">Check the email we sent for feedback from our team. You can re-submit below once you have addressed it.</p>
+          <p className="text-[#F4EFE3] text-sm">Check the email we sent for feedback from our team. You can re-submit below once you have addressed it.</p>
         </div>
         <UploadSection
           files={files}
@@ -202,7 +202,7 @@ function UploadSection({
     <div className="flex flex-col gap-6">
       {/* File picker */}
       <div
-        className="bg-[#1c1c1c] border-2 border-dashed border-[#2a2a2a] rounded-xl p-8 text-center cursor-pointer hover:border-[#1ee231]/40 transition-colors"
+        className="bg-[#17150F] border-2 border-dashed border-[#3a3730] rounded-xl p-8 text-center cursor-pointer hover:border-[#C6F23E]/40 transition-colors"
         onClick={() => inputRef.current?.click()}
       >
         <input
@@ -219,7 +219,7 @@ function UploadSection({
             ? `${files.length} video${files.length !== 1 ? 's' : ''} selected`
             : 'Click to select videos'}
         </p>
-        <p className="text-[#a3a3a3] text-sm">
+        <p className="text-[#8a8575] text-sm">
           {files.length > 0
             ? files.map((f) => f.name).join(', ')
             : `Select ${MIN_FILES}–${MAX_FILES} UGC sample videos · MP4, MOV, WebM · max ${MAX_SIZE_MB} MB each`}
@@ -232,14 +232,14 @@ function UploadSection({
           {files.map((file, i) => (
             <div
               key={i}
-              className="flex items-center justify-between bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl px-4 py-3"
+              className="flex items-center justify-between bg-[#17150F] border border-[#3a3730] rounded-xl px-4 py-3"
             >
               <div className="min-w-0">
                 <p className="text-white text-sm font-medium truncate">{file.name}</p>
-                <p className="text-[#a3a3a3] text-xs">{formatBytes(file.size)}</p>
+                <p className="text-[#8a8575] text-xs">{formatBytes(file.size)}</p>
               </div>
               {uploading && i < uploadedCount ? (
-                <span className="text-[#1ee231] text-sm flex-shrink-0 ml-3">Uploaded</span>
+                <span className="text-[#C6F23E] text-sm flex-shrink-0 ml-3">Uploaded</span>
               ) : uploading && i === uploadedCount ? (
                 <span className="text-[#f59e0b] text-sm flex-shrink-0 ml-3">Uploading...</span>
               ) : null}
@@ -253,13 +253,13 @@ function UploadSection({
       )}
 
       {uploading && (
-        <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl px-4 py-3">
-          <p className="text-[#a3a3a3] text-xs uppercase tracking-wider mb-2">
+        <div className="bg-[#17150F] border border-[#3a3730] rounded-xl px-4 py-3">
+          <p className="text-[#8a8575] text-xs uppercase tracking-wider mb-2">
             Uploading {uploadedCount} of {files.length}
           </p>
-          <div className="h-1.5 bg-[#2a2a2a] rounded-full overflow-hidden">
+          <div className="h-1.5 bg-[#3a3730] rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#1ee231] rounded-full transition-all duration-300"
+              className="h-full bg-[#C6F23E] rounded-full transition-all duration-300"
               style={{ width: `${(uploadedCount / files.length) * 100}%` }}
             />
           </div>
@@ -269,7 +269,7 @@ function UploadSection({
       <button
         onClick={onUpload}
         disabled={uploading || files.length < MIN_FILES}
-        className="self-start bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-5 py-2.5 text-sm hover:bg-[#17c029] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="self-start bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-5 py-2.5 text-sm hover:bg-[#ADDA38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {uploading ? 'Uploading...' : 'Submit for verification'}
       </button>

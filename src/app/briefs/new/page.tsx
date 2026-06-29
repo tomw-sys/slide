@@ -56,29 +56,29 @@ export default function NewBriefPage() {
   const today = new Date().toISOString().split('T')[0]
 
   return (
-    <main className="min-h-screen bg-[#151515]">
-      <nav className="border-b border-[#2a2a2a] px-6 py-4 flex items-center gap-4">
-        <Link href="/briefs" className="text-[#1ee231] text-xl font-bold tracking-tight">
+    <main className="min-h-screen bg-[#100F0C]">
+      <nav className="border-b border-[#3a3730] px-6 py-4 flex items-center gap-4">
+        <Link href="/briefs" className="text-[#C6F23E] text-xl font-bold tracking-tight">
           Slide
         </Link>
-        <span className="text-[#2a2a2a]">/</span>
-        <span className="text-[#a3a3a3] text-sm">New brief</span>
+        <span className="text-[#3a3730]">/</span>
+        <span className="text-[#8a8575] text-sm">New brief</span>
       </nav>
 
       <div className="max-w-2xl mx-auto px-6 py-10">
         <div className="mb-8">
           <h1 className="text-white text-2xl font-bold mb-1">Create a brief</h1>
-          <p className="text-[#a3a3a3] text-sm">
+          <p className="text-[#8a8575] text-sm">
             Briefs are saved as drafts first. Publish when you are ready for creators to see it.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6 space-y-4">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6 space-y-4">
             <h2 className="text-white font-semibold">The basics</h2>
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">
                 Brief title
               </label>
               <input
@@ -87,11 +87,11 @@ export default function NewBriefPage() {
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g. Summer collection UGC for Instagram"
                 required
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
               />
             </div>
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">
                 Description
               </label>
               <textarea
@@ -100,15 +100,15 @@ export default function NewBriefPage() {
                 placeholder="Describe the content you need. What is the product? What tone and style are you after? Any brand guidelines to follow?"
                 rows={5}
                 required
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all resize-none"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all resize-none"
               />
             </div>
           </div>
 
           {/* Deliverables */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6">
             <h2 className="text-white font-semibold mb-1">Deliverables</h2>
-            <p className="text-[#a3a3a3] text-sm mb-4">
+            <p className="text-[#8a8575] text-sm mb-4">
               List exactly what you need. One deliverable per line.
             </p>
             <textarea
@@ -116,20 +116,20 @@ export default function NewBriefPage() {
               onChange={(e) => setDeliverables(e.target.value)}
               placeholder={`3 x 15-30 second vertical videos\n2 x static images\n1 x behind the scenes clip`}
               rows={4}
-              className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all resize-none font-mono text-sm"
+              className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all resize-none font-mono text-sm"
             />
           </div>
 
           {/* Budget and deadline */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6 space-y-4">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6 space-y-4">
             <h2 className="text-white font-semibold">Budget and timeline</h2>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">
+                <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">
                   Total budget
                 </label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#a3a3a3] font-medium">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a8575] font-medium">
                     £
                   </span>
                   <input
@@ -140,12 +140,12 @@ export default function NewBriefPage() {
                     min="1"
                     step="1"
                     required
-                    className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl pl-8 pr-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                    className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl pl-8 pr-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">
+                <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">
                   Deadline
                 </label>
                 <input
@@ -154,16 +154,16 @@ export default function NewBriefPage() {
                   onChange={(e) => setDeadline(e.target.value)}
                   min={today}
                   required
-                  className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all [color-scheme:dark]"
+                  className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all [color-scheme:dark]"
                 />
               </div>
             </div>
           </div>
 
           {/* Niches */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6">
             <h2 className="text-white font-semibold mb-1">Target niches</h2>
-            <p className="text-[#a3a3a3] text-sm mb-4">
+            <p className="text-[#8a8575] text-sm mb-4">
               Creators whose niches match will see this brief in their feed.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -176,8 +176,8 @@ export default function NewBriefPage() {
                     onClick={() => toggleNiche(niche)}
                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
                       selected
-                        ? 'bg-[#1ee231] text-[#151515] border-[#1ee231]'
-                        : 'bg-[#151515] text-[#d4d4d4] border-[#2a2a2a] hover:border-[#1ee231] hover:text-white'
+                        ? 'bg-[#C6F23E] text-[#100F0C] border-[#C6F23E]'
+                        : 'bg-[#100F0C] text-[#F4EFE3] border-[#3a3730] hover:border-[#C6F23E] hover:text-white'
                     }`}
                   >
                     {niche}
@@ -186,7 +186,7 @@ export default function NewBriefPage() {
               })}
             </div>
             {selectedNiches.length > 0 && (
-              <p className="text-[#a3a3a3] text-xs mt-3">{selectedNiches.length} selected</p>
+              <p className="text-[#8a8575] text-xs mt-3">{selectedNiches.length} selected</p>
             )}
           </div>
 
@@ -199,14 +199,14 @@ export default function NewBriefPage() {
           <div className="flex gap-3">
             <Link
               href="/briefs"
-              className="flex-1 text-center border border-[#2a2a2a] text-[#a3a3a3] font-medium rounded-xl px-4 py-3 hover:border-white hover:text-white transition-colors"
+              className="flex-1 text-center border border-[#3a3730] text-[#8a8575] font-medium rounded-xl px-4 py-3 hover:border-white hover:text-white transition-colors"
             >
               Cancel
             </Link>
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-4 py-3 hover:bg-[#17c029] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-4 py-3 hover:bg-[#ADDA38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Saving...' : 'Save as draft'}
             </button>

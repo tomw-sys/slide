@@ -52,7 +52,7 @@ export function VerificationActions({ creatorId }: { creatorId: string }) {
       <span
         className={`text-xs font-medium uppercase tracking-wider px-3 py-1.5 rounded-lg ${
           outcome === 'approved'
-            ? 'bg-[#1ee231]/10 text-[#1ee231]'
+            ? 'bg-[#C6F23E]/10 text-[#C6F23E]'
             : 'bg-[#ef4444]/10 text-[#ef4444]'
         }`}
       >
@@ -74,7 +74,7 @@ export function VerificationActions({ creatorId }: { creatorId: string }) {
             onChange={(e) => setReason(e.target.value)}
             placeholder="Explain what the creator should improve before re-submitting..."
             rows={3}
-            className="bg-[#151515] border border-[#2a2a2a] rounded-xl px-3 py-2 text-white text-sm placeholder-[#a3a3a3] focus:outline-none focus:border-[#ef4444]/60 resize-none transition-colors w-full"
+            className="bg-[#100F0C] border border-[#3a3730] rounded-xl px-3 py-2 text-white text-sm placeholder-[#8a8575] focus:outline-none focus:border-[#ef4444]/60 resize-none transition-colors w-full"
           />
           <div className="flex gap-2">
             <button
@@ -87,7 +87,7 @@ export function VerificationActions({ creatorId }: { creatorId: string }) {
             <button
               onClick={() => { setMode('idle'); setError(null) }}
               disabled={isLoading}
-              className="text-xs font-medium border border-[#2a2a2a] text-[#a3a3a3] rounded-lg px-3 py-1.5 hover:text-white transition-colors disabled:opacity-40"
+              className="text-xs font-medium border border-[#3a3730] text-[#8a8575] rounded-lg px-3 py-1.5 hover:text-white transition-colors disabled:opacity-40"
             >
               Cancel
             </button>
@@ -98,7 +98,7 @@ export function VerificationActions({ creatorId }: { creatorId: string }) {
           <button
             onClick={handleApprove}
             disabled={isLoading}
-            className="text-xs font-medium bg-[#1ee231] text-[#151515] rounded-lg px-3 py-1.5 hover:bg-[#17c029] transition-colors disabled:opacity-60"
+            className="text-xs font-medium bg-[#C6F23E] text-[#100F0C] rounded-lg px-3 py-1.5 hover:bg-[#ADDA38] transition-colors disabled:opacity-60"
           >
             {isLoading ? 'Saving...' : 'Approve'}
           </button>

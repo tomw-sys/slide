@@ -115,25 +115,25 @@ export default function CreatorOnboardingPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#151515] py-12 px-4">
+    <main className="min-h-screen bg-[#100F0C] py-12 px-4">
       <div className="w-full max-w-xl mx-auto">
         <div className="text-center mb-10">
-          <span className="text-[#1ee231] text-2xl font-bold tracking-tight">Slide</span>
+          <span className="text-[#C6F23E] text-2xl font-bold tracking-tight">Slide</span>
           <h1 className="text-white text-2xl font-bold mt-4 mb-1">Build your creator profile</h1>
-          <p className="text-[#a3a3a3] text-sm">
+          <p className="text-[#8a8575] text-sm">
             This is how brands will find and evaluate you. Take your time.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Avatar */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6">
             <h2 className="text-white font-semibold mb-4">Profile photo</h2>
             <div className="flex items-center gap-5">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="relative w-20 h-20 rounded-full bg-[#151515] border border-[#2a2a2a] hover:border-[#1ee231] transition-colors overflow-hidden flex items-center justify-center flex-shrink-0"
+                className="relative w-20 h-20 rounded-full bg-[#100F0C] border border-[#3a3730] hover:border-[#C6F23E] transition-colors overflow-hidden flex items-center justify-center flex-shrink-0"
               >
                 {avatarPreview ? (
                   <img
@@ -143,7 +143,7 @@ export default function CreatorOnboardingPage() {
                   />
                 ) : (
                   <svg
-                    className="text-[#a3a3a3]"
+                    className="text-[#8a8575]"
                     width="28"
                     height="28"
                     fill="none"
@@ -164,11 +164,11 @@ export default function CreatorOnboardingPage() {
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={uploading}
-                  className="text-[#1ee231] text-sm font-medium hover:underline disabled:opacity-50"
+                  className="text-[#C6F23E] text-sm font-medium hover:underline disabled:opacity-50"
                 >
                   {uploading ? 'Uploading...' : 'Upload photo'}
                 </button>
-                <p className="text-[#a3a3a3] text-xs mt-1">JPG or PNG, max 5MB. Optional.</p>
+                <p className="text-[#8a8575] text-xs mt-1">JPG or PNG, max 5MB. Optional.</p>
               </div>
             </div>
             <input
@@ -181,11 +181,11 @@ export default function CreatorOnboardingPage() {
           </div>
 
           {/* Basic info */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6 space-y-4">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6 space-y-4">
             <h2 className="text-white font-semibold">About you</h2>
 
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">
                 Display name
               </label>
               <input
@@ -194,37 +194,37 @@ export default function CreatorOnboardingPage() {
                 onChange={(e) => setDisplayName(e.target.value)}
                 placeholder="How you want to appear on Slide"
                 required
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">Bio</label>
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">Bio</label>
               <textarea
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 placeholder="Tell brands a little about you and your content style"
                 rows={3}
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all resize-none"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all resize-none"
               />
             </div>
 
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">Location</label>
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">Location</label>
               <input
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="e.g. London, UK"
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
               />
             </div>
           </div>
 
           {/* Niches */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6">
             <h2 className="text-white font-semibold mb-1">Content niches</h2>
-            <p className="text-[#a3a3a3] text-sm mb-4">
+            <p className="text-[#8a8575] text-sm mb-4">
               Select all that apply. This is how brands filter creators.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -237,8 +237,8 @@ export default function CreatorOnboardingPage() {
                     onClick={() => toggleNiche(niche)}
                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
                       selected
-                        ? 'bg-[#1ee231] text-[#151515] border-[#1ee231]'
-                        : 'bg-[#151515] text-[#d4d4d4] border-[#2a2a2a] hover:border-[#1ee231] hover:text-white'
+                        ? 'bg-[#C6F23E] text-[#100F0C] border-[#C6F23E]'
+                        : 'bg-[#100F0C] text-[#F4EFE3] border-[#3a3730] hover:border-[#C6F23E] hover:text-white'
                     }`}
                   >
                     {niche}
@@ -247,20 +247,20 @@ export default function CreatorOnboardingPage() {
               })}
             </div>
             {selectedNiches.length > 0 && (
-              <p className="text-[#a3a3a3] text-xs mt-3">
+              <p className="text-[#8a8575] text-xs mt-3">
                 {selectedNiches.length} selected
               </p>
             )}
           </div>
 
           {/* Day rate */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6">
             <h2 className="text-white font-semibold mb-1">Day rate</h2>
-            <p className="text-[#a3a3a3] text-sm mb-4">
+            <p className="text-[#8a8575] text-sm mb-4">
               Your standard rate per day. Brands use this as a starting point.
             </p>
             <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#a3a3a3] font-medium">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a8575] font-medium">
                 £
               </span>
               <input
@@ -270,7 +270,7 @@ export default function CreatorOnboardingPage() {
                 placeholder="250"
                 min="0"
                 step="1"
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl pl-8 pr-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl pl-8 pr-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
               />
             </div>
           </div>
@@ -284,7 +284,7 @@ export default function CreatorOnboardingPage() {
           <button
             type="submit"
             disabled={loading || uploading}
-            className="w-full bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-4 py-3.5 hover:bg-[#17c029] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-base"
+            className="w-full bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-4 py-3.5 hover:bg-[#ADDA38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-base"
           >
             {loading ? 'Setting up your profile...' : 'Complete profile'}
           </button>

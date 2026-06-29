@@ -27,7 +27,7 @@ export function ToggleButton({
       className={`text-xs font-medium uppercase tracking-wider px-3 py-1.5 rounded-lg border transition-colors disabled:opacity-60 ${
         active
           ? 'border-[#ef4444]/40 text-[#ef4444] hover:bg-[#ef4444]/10'
-          : 'border-[#1ee231]/40 text-[#1ee231] hover:bg-[#1ee231]/10'
+          : 'border-[#C6F23E]/40 text-[#C6F23E] hover:bg-[#C6F23E]/10'
       }`}
     >
       {loading ? '...' : active ? 'Deactivate' : 'Activate'}

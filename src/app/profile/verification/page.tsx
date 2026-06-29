@@ -15,7 +15,7 @@ const STATUS_INFO: Record<string, { label: string; classes: string; description:
   },
   approved: {
     label: 'Verified',
-    classes: 'bg-[#1ee231]/10 text-[#1ee231]',
+    classes: 'bg-[#C6F23E]/10 text-[#C6F23E]',
     description: 'Your verified badge is live on your profile and creator cards.',
   },
   rejected: {
@@ -55,7 +55,7 @@ export default async function VerificationPage() {
   const displayName = profile.display_name || user.email || ''
 
   return (
-    <main className="min-h-screen bg-[#151515] pb-28">
+    <main className="min-h-screen bg-[#100F0C] pb-28">
       <TopNav
         displayName={displayName}
         role="creator"
@@ -66,7 +66,7 @@ export default async function VerificationPage() {
         <div className="mb-2">
           <Link
             href="/dashboard/creator"
-            className="text-[#a3a3a3] text-sm hover:text-white transition-colors"
+            className="text-[#8a8575] text-sm hover:text-white transition-colors"
           >
             ← Dashboard
           </Link>
@@ -81,7 +81,7 @@ export default async function VerificationPage() {
               </span>
             )}
           </div>
-          <p className="text-[#a3a3a3] text-sm">
+          <p className="text-[#8a8575] text-sm">
             {statusInfo
               ? statusInfo.description
               : 'Upload 2–3 sample UGC videos to get your verified badge. Verified creators unlock more briefs and appear higher in brand searches.'}
@@ -90,23 +90,23 @@ export default async function VerificationPage() {
 
         {/* What we look for */}
         {verification_status !== 'approved' && (
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-5 mb-6">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-5 mb-6">
             <p className="text-white text-sm font-semibold mb-3">What we look for</p>
-            <ul className="space-y-2 text-sm text-[#a3a3a3]">
+            <ul className="space-y-2 text-sm text-[#8a8575]">
               <li className="flex gap-2">
-                <span className="text-[#1ee231] flex-shrink-0">·</span>
+                <span className="text-[#C6F23E] flex-shrink-0">·</span>
                 Real UGC style — natural, unscripted, shot on your phone
               </li>
               <li className="flex gap-2">
-                <span className="text-[#1ee231] flex-shrink-0">·</span>
+                <span className="text-[#C6F23E] flex-shrink-0">·</span>
                 Clear audio and stable framing (a tripod or leaning against something is fine)
               </li>
               <li className="flex gap-2">
-                <span className="text-[#1ee231] flex-shrink-0">·</span>
+                <span className="text-[#C6F23E] flex-shrink-0">·</span>
                 At least one video featuring a product review or tutorial format
               </li>
               <li className="flex gap-2">
-                <span className="text-[#1ee231] flex-shrink-0">·</span>
+                <span className="text-[#C6F23E] flex-shrink-0">·</span>
                 Your face on screen for at least part of one video
               </li>
             </ul>

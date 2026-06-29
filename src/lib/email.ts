@@ -53,7 +53,7 @@ export async function sendVerificationRejected({
         <p>Hi ${creatorName},</p>
         <p>Thank you for submitting your sample videos for Slide verification. After reviewing your submission, we are not able to approve your profile at this time.</p>
         <p><strong>Feedback from our team:</strong></p>
-        <blockquote style="border-left: 3px solid #1ee231; padding-left: 12px; color: #555;">${reason}</blockquote>
+        <blockquote style="border-left: 3px solid #C6F23E; padding-left: 12px; color: #555;">${reason}</blockquote>
         <p>You are welcome to re-submit at any time once you have addressed the feedback. Head to your profile to upload new samples.</p>
         <p><a href="${BASE_URL}/profile/verification">Re-submit samples</a></p>
         <p>The Slide team</p>

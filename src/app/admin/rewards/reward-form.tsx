@@ -37,7 +37,7 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[#a3a3a3] text-xs uppercase tracking-wider">
+      <label className="text-[#8a8575] text-xs uppercase tracking-wider">
         {label}
         {required && <span className="text-[#ef4444] ml-1">*</span>}
       </label>
@@ -47,7 +47,7 @@ function Field({
         defaultValue={defaultValue ?? ''}
         required={required}
         placeholder={placeholder}
-        className="bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm placeholder-[#a3a3a3] focus:outline-none focus:border-[#1ee231] transition-colors"
+        className="bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-2.5 text-white text-sm placeholder-[#8a8575] focus:outline-none focus:border-[#C6F23E] transition-colors"
       />
     </div>
   )
@@ -114,11 +114,11 @@ export function RewardForm({
         placeholder="e.g. 20% off or £10 off"
       />
       <div className="flex flex-col gap-1.5">
-        <label className="text-[#a3a3a3] text-xs uppercase tracking-wider">Minimum tier</label>
+        <label className="text-[#8a8575] text-xs uppercase tracking-wider">Minimum tier</label>
         <select
           name="minimum_tier"
           defaultValue={reward?.minimum_tier ?? 'rising'}
-          className="bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#1ee231] transition-colors"
+          className="bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#C6F23E] transition-colors"
         >
           {TIERS.map((t) => (
             <option key={t.value} value={t.value}>
@@ -140,14 +140,14 @@ export function RewardForm({
         <button
           type="submit"
           disabled={loading}
-          className="bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-5 py-2.5 text-sm hover:bg-[#17c029] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-5 py-2.5 text-sm hover:bg-[#ADDA38] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {loading ? 'Saving...' : reward ? 'Save changes' : 'Add reward'}
         </button>
         <button
           type="button"
           onClick={onClose}
-          className="border border-[#2a2a2a] text-[#a3a3a3] font-medium rounded-xl px-5 py-2.5 text-sm hover:border-[#3a3a3a] hover:text-white transition-colors"
+          className="border border-[#3a3730] text-[#8a8575] font-medium rounded-xl px-5 py-2.5 text-sm hover:border-[#4a4640] hover:text-white transition-colors"
         >
           Cancel
         </button>

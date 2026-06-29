@@ -9,9 +9,9 @@ interface Props {
 }
 
 const REVIEWED_BADGE: Record<string, { label: string; classes: string }> = {
-  accepted: { label: 'Accepted', classes: 'bg-[#1ee231]/10 text-[#1ee231]' },
+  accepted: { label: 'Accepted', classes: 'bg-[#C6F23E]/10 text-[#C6F23E]' },
   rejected: { label: 'Not progressed', classes: 'bg-[#ef4444]/10 text-[#ef4444]' },
-  withdrawn: { label: 'Withdrawn', classes: 'bg-[#2a2a2a] text-[#a3a3a3]' },
+  withdrawn: { label: 'Withdrawn', classes: 'bg-[#3a3730] text-[#8a8575]' },
 }
 
 export function ApplicationActions({ applicationId, currentStatus }: Props) {
@@ -63,14 +63,14 @@ export function ApplicationActions({ applicationId, currentStatus }: Props) {
         <button
           onClick={handleAccept}
           disabled={!!loading}
-          className="px-4 py-2 bg-[#1ee231] text-[#151515] text-sm font-semibold rounded-xl hover:bg-[#17c029] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-2 bg-[#C6F23E] text-[#100F0C] text-sm font-semibold rounded-xl hover:bg-[#ADDA38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading === 'accept' ? 'Accepting...' : 'Accept'}
         </button>
         <button
           onClick={handleReject}
           disabled={!!loading}
-          className="px-4 py-2 bg-[#1c1c1c] border border-[#ef4444]/30 text-[#ef4444] text-sm font-semibold rounded-xl hover:bg-[#ef4444]/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-2 bg-[#17150F] border border-[#ef4444]/30 text-[#ef4444] text-sm font-semibold rounded-xl hover:bg-[#ef4444]/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading === 'reject' ? 'Passing...' : 'Pass'}
         </button>

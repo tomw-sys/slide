@@ -76,7 +76,7 @@ export default async function SwipePage() {
   const displayName = profile.display_name || user.email || ''
 
   return (
-    <main className="h-dvh bg-[#151515] flex flex-col overflow-hidden">
+    <main className="h-dvh bg-[#100F0C] flex flex-col overflow-hidden">
       <TopNav
         displayName={displayName}
         role="creator"

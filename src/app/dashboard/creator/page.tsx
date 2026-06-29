@@ -12,14 +12,14 @@ function formatBudget(pence: number) {
 
 const APP_STATUS: Record<string, { label: string; dot: string }> = {
   pending:   { label: 'Under review', dot: 'bg-[#f59e0b]' },
-  accepted:  { label: 'Accepted',     dot: 'bg-[#1ee231]' },
+  accepted:  { label: 'Accepted',     dot: 'bg-[#C6F23E]' },
   rejected:  { label: 'Not progressed', dot: 'bg-[#ef4444]' },
-  withdrawn: { label: 'Withdrawn',    dot: 'bg-[#a3a3a3]' },
+  withdrawn: { label: 'Withdrawn',    dot: 'bg-[#8a8575]' },
 }
 
 const TIER_COLOUR: Record<string, string> = {
-  rising:     'text-[#a3a3a3]',
-  verified:   'text-[#1ee231]',
+  rising:     'text-[#8a8575]',
+  verified:   'text-[#C6F23E]',
   elite:      'text-[#f59e0b]',
   ambassador: 'text-[#a855f7]',
 }
@@ -91,7 +91,7 @@ export default async function CreatorDashboardPage() {
   const firstName = profile.display_name?.split(' ')[0] || 'creator'
 
   return (
-    <main className="min-h-dvh bg-[#151515] pb-28">
+    <main className="min-h-dvh bg-[#100F0C] pb-28">
       <TopNav
         displayName={profile.display_name || user.email || ''}
         role="creator"
@@ -107,7 +107,7 @@ export default async function CreatorDashboardPage() {
         <p className={`text-sm font-semibold uppercase tracking-wider mt-1 ${TIER_COLOUR[tier]}`}>
           {tier}
           {creatorProfile.verification_status === 'pending' && (
-            <span className="text-[#a3a3a3] normal-case tracking-normal font-normal ml-2">· verification pending</span>
+            <span className="text-[#8a8575] normal-case tracking-normal font-normal ml-2">· verification pending</span>
           )}
         </p>
       </div>
@@ -115,19 +115,19 @@ export default async function CreatorDashboardPage() {
       {/* Stats strip */}
       <div className="px-5 mb-6">
         <div className="grid grid-cols-3 gap-3">
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-4 animate-fade-up" style={{ animationDelay: '0ms' }}>
-            <p className="text-[#a3a3a3] text-[10px] uppercase tracking-wider mb-1">Applications</p>
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-2xl p-4 animate-fade-up" style={{ animationDelay: '0ms' }}>
+            <p className="text-[#8a8575] text-[10px] uppercase tracking-wider mb-1">Applications</p>
             <p className="text-white text-3xl font-black">{applications.length}</p>
             {pendingCount > 0 && (
               <p className="text-[#f59e0b] text-[10px] mt-0.5">{pendingCount} pending</p>
             )}
           </div>
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-4 animate-fade-up" style={{ animationDelay: '60ms' }}>
-            <p className="text-[#a3a3a3] text-[10px] uppercase tracking-wider mb-1">Active deals</p>
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-2xl p-4 animate-fade-up" style={{ animationDelay: '60ms' }}>
+            <p className="text-[#8a8575] text-[10px] uppercase tracking-wider mb-1">Active deals</p>
             <p className="text-white text-3xl font-black">{activeDeals}</p>
           </div>
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-4 animate-fade-up" style={{ animationDelay: '120ms' }}>
-            <p className="text-[#a3a3a3] text-[10px] uppercase tracking-wider mb-1">Rewards</p>
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-2xl p-4 animate-fade-up" style={{ animationDelay: '120ms' }}>
+            <p className="text-[#8a8575] text-[10px] uppercase tracking-wider mb-1">Rewards</p>
             <p className="text-white text-3xl font-black">0</p>
           </div>
         </div>
@@ -137,13 +137,13 @@ export default async function CreatorDashboardPage() {
       {!creatorProfile.verification_status && (
         <div className="px-5 mb-6 animate-fade-up">
           <Link href="/profile/verification" className="block">
-            <div className="bg-[#1ee231]/10 border border-[#1ee231]/30 rounded-2xl p-5">
+            <div className="bg-[#C6F23E]/10 border border-[#C6F23E]/30 rounded-2xl p-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[#1ee231] font-bold mb-0.5">Get verified</p>
-                  <p className="text-[#a3a3a3] text-sm">Upload 2-3 sample videos to unlock more briefs</p>
+                  <p className="text-[#C6F23E] font-bold mb-0.5">Get verified</p>
+                  <p className="text-[#8a8575] text-sm">Upload 2-3 sample videos to unlock more briefs</p>
                 </div>
-                <span className="text-[#1ee231] text-2xl">→</span>
+                <span className="text-[#C6F23E] text-2xl">→</span>
               </div>
             </div>
           </Link>
@@ -153,7 +153,7 @@ export default async function CreatorDashboardPage() {
       {/* Applications feed */}
       {applications.length > 0 && (
         <div className="px-5">
-          <h2 className="text-[#a3a3a3] text-xs uppercase tracking-wider mb-3">Your applications</h2>
+          <h2 className="text-[#8a8575] text-xs uppercase tracking-wider mb-3">Your applications</h2>
           <div className="flex flex-col gap-2.5 stagger-children">
             {applications.map((app) => {
               const brief = app.briefs
@@ -170,7 +170,7 @@ export default async function CreatorDashboardPage() {
                 <Link
                   key={app.id}
                   href={`/briefs/${app.brief_id}`}
-                  className="flex items-center gap-4 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl px-4 py-4 hover:border-[#3a3a3a] transition-colors tap-scale animate-fade-up"
+                  className="flex items-center gap-4 bg-[#17150F] border border-[#3a3730] rounded-2xl px-4 py-4 hover:border-[#4a4640] transition-colors tap-scale animate-fade-up"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   <div className={`w-2 h-2 rounded-full flex-shrink-0 ${badge.dot}`} />
@@ -178,13 +178,13 @@ export default async function CreatorDashboardPage() {
                     <p className="text-white text-sm font-semibold truncate">
                       {brief?.title || 'Untitled brief'}
                     </p>
-                    <p className="text-[#a3a3a3] text-xs mt-0.5">{brandName}</p>
+                    <p className="text-[#8a8575] text-xs mt-0.5">{brandName}</p>
                   </div>
                   <div className="flex flex-col items-end gap-1 flex-shrink-0">
                     {app.proposed_rate && (
-                      <span className="text-[#1ee231] text-sm font-bold">{formatBudget(app.proposed_rate)}</span>
+                      <span className="text-[#C6F23E] text-sm font-bold">{formatBudget(app.proposed_rate)}</span>
                     )}
-                    <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider">{badge.label}</span>
+                    <span className="text-[#8a8575] text-[10px] uppercase tracking-wider">{badge.label}</span>
                   </div>
                 </Link>
               )
@@ -196,13 +196,13 @@ export default async function CreatorDashboardPage() {
       {/* Empty state */}
       {applications.length === 0 && (
         <div className="px-5">
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-8 text-center animate-fade-up">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-2xl p-8 text-center animate-fade-up">
             <p className="text-4xl mb-3">🎬</p>
             <p className="text-white font-semibold mb-1">No applications yet</p>
-            <p className="text-[#a3a3a3] text-sm mb-4">Swipe through live briefs and apply to get started.</p>
+            <p className="text-[#8a8575] text-sm mb-4">Swipe through live briefs and apply to get started.</p>
             <Link
               href="/swipe"
-              className="inline-flex items-center gap-2 bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-5 py-2.5 text-sm hover:bg-[#17c029] transition-colors tap-scale"
+              className="inline-flex items-center gap-2 bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-5 py-2.5 text-sm hover:bg-[#ADDA38] transition-colors tap-scale"
             >
               Browse briefs
             </Link>

@@ -74,18 +74,18 @@ export default async function ApplicationsPage({
   const reviewed = applications.filter((a) => a.status !== 'pending')
 
   const REVIEWED_LABELS: Record<string, { label: string; classes: string }> = {
-    accepted: { label: 'Accepted', classes: 'bg-[#1ee231]/10 text-[#1ee231]' },
+    accepted: { label: 'Accepted', classes: 'bg-[#C6F23E]/10 text-[#C6F23E]' },
     rejected: { label: 'Not progressed', classes: 'bg-[#ef4444]/10 text-[#ef4444]' },
-    withdrawn: { label: 'Withdrawn', classes: 'bg-[#2a2a2a] text-[#a3a3a3]' },
+    withdrawn: { label: 'Withdrawn', classes: 'bg-[#3a3730] text-[#8a8575]' },
   }
 
   return (
-    <main className="min-h-screen bg-[#151515]">
+    <main className="min-h-screen bg-[#100F0C]">
       <Nav displayName={displayName} role="brand" />
 
       <div className="max-w-3xl mx-auto px-6 py-10">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-[#a3a3a3] mb-6 flex-wrap">
+        <div className="flex items-center gap-2 text-sm text-[#8a8575] mb-6 flex-wrap">
           <Link href="/briefs" className="hover:text-white transition-colors">
             Your briefs
           </Link>
@@ -101,16 +101,16 @@ export default async function ApplicationsPage({
         <div className="flex items-start justify-between gap-4 mb-8">
           <div>
             <h1 className="text-white text-xl font-bold">{brief.title}</h1>
-            <p className="text-[#a3a3a3] text-sm mt-1">
+            <p className="text-[#8a8575] text-sm mt-1">
               {applications.length} application{applications.length !== 1 ? 's' : ''}
               {pending.length > 0 && (
-                <span className="ml-2 text-[#1ee231]">{pending.length} awaiting review</span>
+                <span className="ml-2 text-[#C6F23E]">{pending.length} awaiting review</span>
               )}
             </p>
           </div>
           <Link
             href={`/briefs/${id}`}
-            className="text-[#a3a3a3] text-sm hover:text-white transition-colors flex-shrink-0"
+            className="text-[#8a8575] text-sm hover:text-white transition-colors flex-shrink-0"
           >
             View brief
           </Link>
@@ -118,9 +118,9 @@ export default async function ApplicationsPage({
 
         {/* Empty state */}
         {applications.length === 0 && (
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-10 text-center">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-10 text-center">
             <p className="text-white font-medium mb-2">No applications yet</p>
-            <p className="text-[#a3a3a3] text-sm">
+            <p className="text-[#8a8575] text-sm">
               {brief.status === 'draft'
                 ? 'Publish your brief so creators can discover and apply.'
                 : 'Creators will see this brief in their swipe feed.'}
@@ -128,7 +128,7 @@ export default async function ApplicationsPage({
             {brief.status === 'draft' && (
               <Link
                 href={`/briefs/${id}`}
-                className="inline-flex mt-4 items-center gap-2 bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-4 py-2.5 text-sm hover:bg-[#17c029] transition-colors"
+                className="inline-flex mt-4 items-center gap-2 bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-4 py-2.5 text-sm hover:bg-[#ADDA38] transition-colors"
               >
                 Go to brief
               </Link>
@@ -139,7 +139,7 @@ export default async function ApplicationsPage({
         {/* Pending applications */}
         {pending.length > 0 && (
           <div className="mb-8">
-            <p className="text-[#a3a3a3] text-xs uppercase tracking-wider font-medium mb-4">
+            <p className="text-[#8a8575] text-xs uppercase tracking-wider font-medium mb-4">
               Awaiting review ({pending.length})
             </p>
             <div className="space-y-4">
@@ -149,13 +149,13 @@ export default async function ApplicationsPage({
                 return (
                   <div
                     key={app.id}
-                    className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-5"
+                    className="bg-[#17150F] border border-[#3a3730] rounded-xl p-5"
                   >
                     {/* Creator header */}
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div>
                         <div className="flex items-center gap-2 mb-1">
-                          <div className="w-8 h-8 rounded-full bg-[#2a2a2a] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-[#3a3730] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
                             {(p?.display_name || 'C')[0].toUpperCase()}
                           </div>
                           <p className="text-white font-semibold">
@@ -164,15 +164,15 @@ export default async function ApplicationsPage({
                         </div>
                         <div className="flex items-center gap-2 pl-10">
                           {cp?.tier && (
-                            <span className="text-[#a3a3a3] text-xs uppercase tracking-wider">
+                            <span className="text-[#8a8575] text-xs uppercase tracking-wider">
                               {cp.tier}
                             </span>
                           )}
                           {cp?.verification_status === 'approved' && (
-                            <span className="text-[#1ee231] text-xs">Verified</span>
+                            <span className="text-[#C6F23E] text-xs">Verified</span>
                           )}
                           {cp?.niches && cp.niches.length > 0 && (
-                            <span className="text-[#a3a3a3] text-xs">
+                            <span className="text-[#8a8575] text-xs">
                               {cp.niches.slice(0, 3).join(', ')}
                             </span>
                           )}
@@ -180,17 +180,17 @@ export default async function ApplicationsPage({
                       </div>
                       <div className="text-right flex-shrink-0">
                         {app.proposed_rate && (
-                          <p className="text-[#1ee231] font-semibold">
+                          <p className="text-[#C6F23E] font-semibold">
                             {formatBudget(app.proposed_rate)}
                           </p>
                         )}
                         {cp?.day_rate && (
-                          <p className="text-[#a3a3a3] text-xs mt-0.5">
+                          <p className="text-[#8a8575] text-xs mt-0.5">
                             Day rate: {formatBudget(cp.day_rate)}
                           </p>
                         )}
                         {brief.budget && app.proposed_rate && (
-                          <p className="text-[#a3a3a3] text-xs mt-0.5">
+                          <p className="text-[#8a8575] text-xs mt-0.5">
                             Budget: {formatBudget(brief.budget)}
                           </p>
                         )}
@@ -199,7 +199,7 @@ export default async function ApplicationsPage({
 
                     {/* Pitch */}
                     {app.pitch && (
-                      <p className="text-[#d4d4d4] text-sm leading-relaxed whitespace-pre-wrap mb-5 pl-0">
+                      <p className="text-[#F4EFE3] text-sm leading-relaxed whitespace-pre-wrap mb-5 pl-0">
                         {app.pitch}
                       </p>
                     )}
@@ -215,7 +215,7 @@ export default async function ApplicationsPage({
         {/* Reviewed applications */}
         {reviewed.length > 0 && (
           <div>
-            <p className="text-[#a3a3a3] text-xs uppercase tracking-wider font-medium mb-4">
+            <p className="text-[#8a8575] text-xs uppercase tracking-wider font-medium mb-4">
               Reviewed ({reviewed.length})
             </p>
             <div className="space-y-3">
@@ -226,11 +226,11 @@ export default async function ApplicationsPage({
                 return (
                   <div
                     key={app.id}
-                    className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-4"
+                    className="bg-[#17150F] border border-[#3a3730] rounded-xl p-4"
                   >
                     <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-7 h-7 rounded-full bg-[#2a2a2a] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        <div className="w-7 h-7 rounded-full bg-[#3a3730] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                           {(p?.display_name || 'C')[0].toUpperCase()}
                         </div>
                         <div>
@@ -238,7 +238,7 @@ export default async function ApplicationsPage({
                             {p?.display_name || 'Creator'}
                           </p>
                           {cp?.niches && cp.niches.length > 0 && (
-                            <p className="text-[#a3a3a3] text-xs mt-0.5">
+                            <p className="text-[#8a8575] text-xs mt-0.5">
                               {cp.niches.slice(0, 2).join(', ')}
                             </p>
                           )}
@@ -246,7 +246,7 @@ export default async function ApplicationsPage({
                       </div>
                       <div className="flex items-center gap-3 flex-shrink-0">
                         {app.proposed_rate && (
-                          <span className="text-[#a3a3a3] text-sm">
+                          <span className="text-[#8a8575] text-sm">
                             {formatBudget(app.proposed_rate)}
                           </span>
                         )}

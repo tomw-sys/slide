@@ -114,11 +114,11 @@ export function RewardCard({ reward }: { reward: Reward }) {
 
       {/* Top row */}
       <div className="absolute top-0 left-0 right-0 p-4 flex items-start justify-between z-10">
-        <span className="bg-[#1ee231] text-[#151515] text-[9px] font-black uppercase tracking-[0.18em] px-2.5 py-1 rounded-full">
+        <span className="bg-[#C6F23E] text-[#100F0C] text-[9px] font-black uppercase tracking-[0.18em] px-2.5 py-1 rounded-full">
           Exclusive to Slide
         </span>
         {expiryLabel && (
-          <span className="bg-black/50 backdrop-blur-sm text-[#a3a3a3] text-[10px] font-medium px-2.5 py-1 rounded-full border border-white/10">
+          <span className="bg-black/50 backdrop-blur-sm text-[#8a8575] text-[10px] font-medium px-2.5 py-1 rounded-full border border-white/10">
             Expires {expiryLabel}
           </span>
         )}
@@ -132,11 +132,11 @@ export function RewardCard({ reward }: { reward: Reward }) {
             <p className="text-white font-black text-xl leading-tight truncate">
               {reward.partner_name}
             </p>
-            <p className="text-[#a3a3a3] text-xs mt-0.5 line-clamp-1">
+            <p className="text-[#8a8575] text-xs mt-0.5 line-clamp-1">
               {reward.offer_description}
             </p>
           </div>
-          <p className="text-[#1ee231] font-black text-3xl leading-none flex-shrink-0 tabular-nums">
+          <p className="text-[#C6F23E] font-black text-3xl leading-none flex-shrink-0 tabular-nums">
             {reward.discount_value}
           </p>
         </div>
@@ -147,14 +147,14 @@ export function RewardCard({ reward }: { reward: Reward }) {
           <button
             onClick={handleCopy}
             className="w-full flex items-center justify-between gap-3 bg-black/60 backdrop-blur-sm rounded-xl px-4 py-3 transition-all tap-scale border"
-            style={{ borderColor: copied ? '#1ee231' : 'rgba(255,255,255,0.12)' }}
+            style={{ borderColor: copied ? '#C6F23E' : 'rgba(255,255,255,0.12)' }}
           >
-            <span className="font-mono font-bold text-base tracking-[0.18em] text-[#1ee231] flex-1 text-left truncate">
+            <span className="font-mono font-bold text-base tracking-[0.18em] text-[#C6F23E] flex-1 text-left truncate">
               {code}
             </span>
             <span
               className="flex items-center gap-1.5 text-xs font-semibold flex-shrink-0 transition-colors"
-              style={{ color: copied ? '#1ee231' : '#a3a3a3' }}
+              style={{ color: copied ? '#C6F23E' : '#8a8575' }}
             >
               {copied ? (
                 <>
@@ -178,7 +178,7 @@ export function RewardCard({ reward }: { reward: Reward }) {
           <button
             onClick={handleReveal}
             disabled={loading}
-            className="w-full py-3 rounded-xl text-sm font-bold tracking-wide transition-all tap-scale disabled:opacity-50 disabled:cursor-not-allowed bg-black/50 backdrop-blur-sm text-[#1ee231] border border-[#1ee231]/40 hover:border-[#1ee231]/80 hover:bg-black/60"
+            className="w-full py-3 rounded-xl text-sm font-bold tracking-wide transition-all tap-scale disabled:opacity-50 disabled:cursor-not-allowed bg-black/50 backdrop-blur-sm text-[#C6F23E] border border-[#C6F23E]/40 hover:border-[#C6F23E]/80 hover:bg-black/60"
           >
             {loading ? 'Unlocking...' : 'Reveal code →'}
           </button>

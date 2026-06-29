@@ -25,29 +25,29 @@ export default async function SignUpPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#151515] flex items-center justify-center px-4">
+    <main className="min-h-screen bg-[#100F0C] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <span className="text-[#1ee231] text-3xl font-bold tracking-tight">Slide</span>
-          <p className="text-[#a3a3a3] text-sm mt-2">Who are you joining as?</p>
+          <span className="text-[#C6F23E] text-3xl font-bold tracking-tight">Slide</span>
+          <p className="text-[#8a8575] text-sm mt-2">Who are you joining as?</p>
         </div>
 
         <div className="space-y-4">
           <Link href="/sign-up/creator" className="block">
-            <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#1ee231] transition-colors group cursor-pointer">
+            <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6 hover:border-[#C6F23E] transition-colors group cursor-pointer">
               <div className="flex items-start gap-4">
                 <div className="text-3xl">🎬</div>
                 <div className="flex-1">
-                  <h2 className="text-white font-semibold text-lg group-hover:text-[#1ee231] transition-colors">
+                  <h2 className="text-white font-semibold text-lg group-hover:text-[#C6F23E] transition-colors">
                     Creator
                   </h2>
-                  <p className="text-[#a3a3a3] text-sm mt-1">
+                  <p className="text-[#8a8575] text-sm mt-1">
                     Get discovered by brands, apply to paid briefs, and unlock exclusive retail
                     rewards.
                   </p>
                 </div>
                 <svg
-                  className="text-[#a3a3a3] group-hover:text-[#1ee231] transition-colors mt-1"
+                  className="text-[#8a8575] group-hover:text-[#C6F23E] transition-colors mt-1"
                   width="20"
                   height="20"
                   fill="none"
@@ -66,19 +66,19 @@ export default async function SignUpPage() {
           </Link>
 
           <Link href="/sign-up/brand" className="block">
-            <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#1ee231] transition-colors group cursor-pointer">
+            <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-6 hover:border-[#C6F23E] transition-colors group cursor-pointer">
               <div className="flex items-start gap-4">
                 <div className="text-3xl">🏢</div>
                 <div className="flex-1">
-                  <h2 className="text-white font-semibold text-lg group-hover:text-[#1ee231] transition-colors">
+                  <h2 className="text-white font-semibold text-lg group-hover:text-[#C6F23E] transition-colors">
                     Brand or Agency
                   </h2>
-                  <p className="text-[#a3a3a3] text-sm mt-1">
+                  <p className="text-[#8a8575] text-sm mt-1">
                     Find verified UGC creators, post briefs, and manage campaigns end to end.
                   </p>
                 </div>
                 <svg
-                  className="text-[#a3a3a3] group-hover:text-[#1ee231] transition-colors mt-1"
+                  className="text-[#8a8575] group-hover:text-[#C6F23E] transition-colors mt-1"
                   width="20"
                   height="20"
                   fill="none"
@@ -97,9 +97,9 @@ export default async function SignUpPage() {
           </Link>
         </div>
 
-        <p className="text-center text-[#a3a3a3] text-sm mt-8">
+        <p className="text-center text-[#8a8575] text-sm mt-8">
           Already have an account?{' '}
-          <Link href="/sign-in" className="text-[#1ee231] hover:underline">
+          <Link href="/sign-in" className="text-[#C6F23E] hover:underline">
             Sign in
           </Link>
         </p>

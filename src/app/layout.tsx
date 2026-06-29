@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Unbounded } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const unbounded = Unbounded({ subsets: ['latin'], weight: ['900'], variable: '--font-unbounded' })
 
 export const metadata: Metadata = {
   title: 'Slide',
@@ -15,15 +16,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="antialiased text-white font-sans">
+    <html lang="en" className={`${inter.variable} ${unbounded.variable}`}>
+      <body className="antialiased font-sans" style={{ color: '#FBF8F1' }}>
         {/* Textured background: radial gradient vignette + SVG grain overlay */}
         <div className="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
           {/* Radial gradient — lighter centre, darker edges */}
           <div
             className="absolute inset-0"
             style={{
-              background: 'radial-gradient(ellipse at 50% 25%, #1a1a1a 0%, #0e0e0e 100%)',
+              background: 'radial-gradient(ellipse at 50% 25%, #1a1710 0%, #100F0C 100%)',
             }}
           />
           {/* SVG fractal noise grain at ~4% opacity */}

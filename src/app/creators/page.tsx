@@ -17,8 +17,8 @@ function formatBudget(pence: number) {
 }
 
 const TIER_BADGE: Record<string, { label: string; classes: string }> = {
-  rising:     { label: 'Rising',     classes: 'text-[#a3a3a3]' },
-  verified:   { label: 'Verified',   classes: 'text-[#1ee231]' },
+  rising:     { label: 'Rising',     classes: 'text-[#8a8575]' },
+  verified:   { label: 'Verified',   classes: 'text-[#C6F23E]' },
   elite:      { label: 'Elite',      classes: 'text-[#f59e0b]' },
   ambassador: { label: 'Ambassador', classes: 'text-[#a855f7]' },
 }
@@ -99,13 +99,13 @@ export default async function CreatorsPage({
   }
 
   return (
-    <main className="min-h-screen bg-[#151515]">
+    <main className="min-h-screen bg-[#100F0C]">
       <Nav displayName={displayName} role="brand" />
 
       <div className="max-w-5xl mx-auto px-5 py-8">
         <div className="mb-6">
           <h1 className="text-white text-2xl font-black mb-1">Creator directory</h1>
-          <p className="text-[#a3a3a3] text-sm">
+          <p className="text-[#8a8575] text-sm">
             {creators.length} creator{creators.length !== 1 ? 's' : ''}
             {niche || location || minFollowers || tier ? ' matching your filters' : ''}
           </p>
@@ -121,9 +121,9 @@ export default async function CreatorsPage({
         </Suspense>
 
         {creators.length === 0 ? (
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-10 text-center mt-6">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-2xl p-10 text-center mt-6">
             <p className="text-white font-semibold mb-1">No creators found</p>
-            <p className="text-[#a3a3a3] text-sm">Try adjusting your filters.</p>
+            <p className="text-[#8a8575] text-sm">Try adjusting your filters.</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-6 stagger-children">
@@ -139,7 +139,7 @@ export default async function CreatorsPage({
               return (
                 <div
                   key={creator.id}
-                  className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 flex flex-col items-center text-center gap-3 animate-fade-up tap-scale"
+                  className="bg-[#17150F] border border-[#3a3730] rounded-2xl p-5 flex flex-col items-center text-center gap-3 animate-fade-up tap-scale"
                 >
                   {/* Circular avatar — centred */}
                   <div className="relative">
@@ -147,17 +147,17 @@ export default async function CreatorsPage({
                       <img
                         src={p.avatar_url}
                         alt={p.display_name || 'Creator'}
-                        className="w-20 h-20 rounded-full object-cover border-2 border-[#2a2a2a]"
+                        className="w-20 h-20 rounded-full object-cover border-2 border-[#3a3730]"
                       />
                     ) : (
-                      <div className="w-20 h-20 rounded-full bg-[#2a2a2a] flex items-center justify-center text-white text-2xl font-black border-2 border-[#333]">
+                      <div className="w-20 h-20 rounded-full bg-[#3a3730] flex items-center justify-center text-white text-2xl font-black border-2 border-[#333]">
                         {initials}
                       </div>
                     )}
                     {creator.verification_status === 'approved' && (
                       <span
                         title="Verified creator"
-                        className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#1ee231] border-2 border-[#1c1c1c] flex items-center justify-center text-[#151515] text-[10px] font-black"
+                        className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#C6F23E] border-2 border-[#17150F] flex items-center justify-center text-[#100F0C] text-[10px] font-black"
                       >
                         ✓
                       </span>
@@ -178,13 +178,13 @@ export default async function CreatorsPage({
                   {totalFollowers > 0 && (
                     <div>
                       <p className="text-white text-xl font-black">{formatFollowers(totalFollowers)}</p>
-                      <p className="text-[#a3a3a3] text-[10px] uppercase tracking-wider">followers</p>
+                      <p className="text-[#8a8575] text-[10px] uppercase tracking-wider">followers</p>
                     </div>
                   )}
 
                   {/* Location */}
                   {p?.location && (
-                    <p className="text-[#a3a3a3] text-xs">{p.location}</p>
+                    <p className="text-[#8a8575] text-xs">{p.location}</p>
                   )}
 
                   {/* Niches */}
@@ -193,20 +193,20 @@ export default async function CreatorsPage({
                       {creator.niches.slice(0, 2).map((n) => (
                         <span
                           key={n}
-                          className="px-2 py-0.5 rounded-full text-[10px] bg-[#1ee231]/10 text-[#1ee231] border border-[#1ee231]/20"
+                          className="px-2 py-0.5 rounded-full text-[10px] bg-[#C6F23E]/10 text-[#C6F23E] border border-[#C6F23E]/20"
                         >
                           {n}
                         </span>
                       ))}
                       {creator.niches.length > 2 && (
-                        <span className="text-[#a3a3a3] text-[10px]">+{creator.niches.length - 2}</span>
+                        <span className="text-[#8a8575] text-[10px]">+{creator.niches.length - 2}</span>
                       )}
                     </div>
                   )}
 
                   {/* Day rate */}
                   {creator.day_rate && (
-                    <p className="text-[#1ee231] text-sm font-bold">{formatBudget(creator.day_rate)}<span className="text-[#a3a3a3] font-normal text-xs">/day</span></p>
+                    <p className="text-[#C6F23E] text-sm font-bold">{formatBudget(creator.day_rate)}<span className="text-[#8a8575] font-normal text-xs">/day</span></p>
                   )}
                 </div>
               )

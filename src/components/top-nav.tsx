@@ -13,8 +13,8 @@ interface TopNavProps {
 }
 
 const TIER_COLOUR: Record<string, string> = {
-  rising:     '#a3a3a3',
-  verified:   '#1ee231',
+  rising:     '#8a8575',
+  verified:   '#C6F23E',
   elite:      '#f59e0b',
   ambassador: '#a855f7',
 }
@@ -148,7 +148,7 @@ export function TopNav({ displayName, role, tier, avatarUrl }: TopNavProps) {
   useEffect(() => { setDrawerOpen(false) }, [pathname])
 
   const initial = (displayName || 'U')[0].toUpperCase()
-  const tierColour = tier ? (TIER_COLOUR[tier] ?? '#a3a3a3') : null
+  const tierColour = tier ? (TIER_COLOUR[tier] ?? '#8a8575') : null
   const links = role === 'brand' ? BRAND_LINKS : role === 'admin' ? ADMIN_LINKS : CREATOR_LINKS
 
   return (
@@ -176,10 +176,10 @@ export function TopNav({ displayName, role, tier, avatarUrl }: TopNavProps) {
         {/* Wordmark */}
         <Link
           href="/dashboard"
-          className="text-white font-black text-xl tracking-tight"
+          className="font-display font-black text-xl tracking-tight text-white"
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          Slide.
+          Slide<span className="text-[#C6F23E]">.</span>
         </Link>
 
         {/* Avatar → /profile */}
@@ -187,7 +187,7 @@ export function TopNav({ displayName, role, tier, avatarUrl }: TopNavProps) {
           href="/profile"
           className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold overflow-hidden border border-white/10 tap-scale"
           style={{
-            backgroundColor: '#2a2a2a',
+            backgroundColor: '#3a3730',
             WebkitTapHighlightColor: 'transparent',
           }}
         >
@@ -210,12 +210,12 @@ export function TopNav({ displayName, role, tier, avatarUrl }: TopNavProps) {
           />
 
           {/* Panel */}
-          <div className="relative flex flex-col w-72 max-w-[85vw] h-full bg-[#1c1c1c] animate-slide-in-left shadow-2xl">
+          <div className="relative flex flex-col w-72 max-w-[85vw] h-full bg-[#17150F] animate-slide-in-left shadow-2xl">
             {/* Close */}
             <button
               onClick={() => setDrawerOpen(false)}
               aria-label="Close menu"
-              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/8 flex items-center justify-center text-[#6b7280] hover:text-white transition-colors tap-scale"
+              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/8 flex items-center justify-center text-[#5C584C] hover:text-white transition-colors tap-scale"
               style={{
                 marginTop: 'max(env(safe-area-inset-top), 12px)',
                 WebkitTapHighlightColor: 'transparent',
@@ -228,10 +228,10 @@ export function TopNav({ displayName, role, tier, avatarUrl }: TopNavProps) {
 
             {/* User block */}
             <div
-              className="px-5 pb-5 border-b border-[#2a2a2a]"
+              className="px-5 pb-5 border-b border-[#3a3730]"
               style={{ paddingTop: 'max(calc(env(safe-area-inset-top) + 24px), 40px)' }}
             >
-              <div className="w-14 h-14 rounded-full flex items-center justify-center text-white text-xl font-black mb-3 overflow-hidden border-2 border-[#3a3a3a]" style={{ backgroundColor: '#2a2a2a' }}>
+              <div className="w-14 h-14 rounded-full flex items-center justify-center text-white text-xl font-black mb-3 overflow-hidden border-2 border-[#4a4640]" style={{ backgroundColor: '#3a3730' }}>
                 {avatarUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={avatarUrl} alt={displayName} className="w-full h-full object-cover" />
@@ -261,12 +261,12 @@ export function TopNav({ displayName, role, tier, avatarUrl }: TopNavProps) {
                     href={link.href}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl mb-0.5 transition-colors text-sm font-medium"
                     style={{
-                      color: active ? '#1ee231' : '#a3a3a3',
-                      backgroundColor: active ? 'rgba(30,226,49,0.08)' : 'transparent',
+                      color: active ? '#C6F23E' : '#8a8575',
+                      backgroundColor: active ? 'rgba(198,242,62,0.08)' : 'transparent',
                       WebkitTapHighlightColor: 'transparent',
                     }}
                   >
-                    <span style={{ color: active ? '#1ee231' : '#6b7280' }}>{link.icon}</span>
+                    <span style={{ color: active ? '#C6F23E' : '#5C584C' }}>{link.icon}</span>
                     {link.label}
                   </Link>
                 )
@@ -274,11 +274,11 @@ export function TopNav({ displayName, role, tier, avatarUrl }: TopNavProps) {
             </nav>
 
             {/* Sign out */}
-            <div className="p-3 border-t border-[#2a2a2a]" style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 20px)' }}>
+            <div className="p-3 border-t border-[#3a3730]" style={{ paddingBottom: 'max(env(safe-area-inset-bottom), 20px)' }}>
               <form action={signOut}>
                 <button
                   type="submit"
-                  className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-[#6b7280] hover:text-white hover:bg-white/5 transition-colors text-sm font-medium"
+                  className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-[#5C584C] hover:text-white hover:bg-white/5 transition-colors text-sm font-medium"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" stroke="currentColor">

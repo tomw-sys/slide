@@ -29,9 +29,9 @@ export function Nav({ displayName, role, links }: NavProps) {
   const navLinks = links ?? defaultLinks
 
   return (
-    <nav className="border-b border-[#2a2a2a] px-6 py-4 flex items-center justify-between">
+    <nav className="border-b border-[#3a3730] px-6 py-4 flex items-center justify-between">
       <div className="flex items-center gap-8">
-        <Link href="/dashboard" className="text-[#1ee231] text-xl font-bold tracking-tight">
+        <Link href="/dashboard" className="text-[#C6F23E] text-xl font-bold tracking-tight">
           Slide
         </Link>
         <div className="hidden sm:flex items-center gap-6">
@@ -39,7 +39,7 @@ export function Nav({ displayName, role, links }: NavProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[#a3a3a3] text-sm hover:text-white transition-colors"
+              className="text-[#8a8575] text-sm hover:text-white transition-colors"
             >
               {link.label}
             </Link>
@@ -47,9 +47,9 @@ export function Nav({ displayName, role, links }: NavProps) {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <span className="text-[#a3a3a3] text-sm hidden sm:block">{displayName}</span>
+        <span className="text-[#8a8575] text-sm hidden sm:block">{displayName}</span>
         <form action={signOut}>
-          <button type="submit" className="text-[#a3a3a3] text-sm hover:text-white transition-colors">
+          <button type="submit" className="text-[#8a8575] text-sm hover:text-white transition-colors">
             Sign out
           </button>
         </form>

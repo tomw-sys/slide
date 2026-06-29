@@ -70,7 +70,7 @@ export function CreatorFilters({ niche, location, minFollowers, tier }: Props) {
       <select
         value={niche}
         onChange={(e) => update('niche', e.target.value)}
-        className="bg-[#1c1c1c] border border-[#2a2a2a] text-sm text-white rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent cursor-pointer"
+        className="bg-[#17150F] border border-[#3a3730] text-sm text-white rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent cursor-pointer"
       >
         <option value="">All niches</option>
         {NICHES.map((n) => (
@@ -84,7 +84,7 @@ export function CreatorFilters({ niche, location, minFollowers, tier }: Props) {
       <select
         value={tier}
         onChange={(e) => update('tier', e.target.value)}
-        className="bg-[#1c1c1c] border border-[#2a2a2a] text-sm text-white rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent cursor-pointer"
+        className="bg-[#17150F] border border-[#3a3730] text-sm text-white rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent cursor-pointer"
       >
         {TIERS.map((t) => (
           <option key={t.value} value={t.value}>
@@ -97,7 +97,7 @@ export function CreatorFilters({ niche, location, minFollowers, tier }: Props) {
       <select
         value={minFollowers}
         onChange={(e) => update('minFollowers', e.target.value)}
-        className="bg-[#1c1c1c] border border-[#2a2a2a] text-sm text-white rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent cursor-pointer"
+        className="bg-[#17150F] border border-[#3a3730] text-sm text-white rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent cursor-pointer"
       >
         {FOLLOWER_RANGES.map((r) => (
           <option key={r.value} value={r.value}>
@@ -115,14 +115,14 @@ export function CreatorFilters({ niche, location, minFollowers, tier }: Props) {
         onKeyDown={(e) => {
           if (e.key === 'Enter') update('location', (e.target as HTMLInputElement).value.trim())
         }}
-        className="bg-[#1c1c1c] border border-[#2a2a2a] text-sm text-white placeholder-[#a3a3a3] rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent w-36"
+        className="bg-[#17150F] border border-[#3a3730] text-sm text-white placeholder-[#8a8575] rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent w-36"
       />
 
       {/* Clear filters */}
       {hasFilters && (
         <button
           onClick={() => router.push('/creators')}
-          className="text-[#a3a3a3] text-sm hover:text-white transition-colors px-2"
+          className="text-[#8a8575] text-sm hover:text-white transition-colors px-2"
         >
           Clear
         </button>

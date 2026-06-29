@@ -28,7 +28,7 @@ export function BriefStatusControls({ briefId, currentStatus }: Props) {
         <button
           onClick={() => handleStatusChange('live')}
           disabled={loading}
-          className="text-xs font-medium px-3 py-1.5 rounded-lg bg-[#1ee231]/10 text-[#1ee231] hover:bg-[#1ee231]/20 transition-colors disabled:opacity-50"
+          className="text-xs font-medium px-3 py-1.5 rounded-lg bg-[#C6F23E]/10 text-[#C6F23E] hover:bg-[#C6F23E]/20 transition-colors disabled:opacity-50"
         >
           Publish
         </button>
@@ -37,7 +37,7 @@ export function BriefStatusControls({ briefId, currentStatus }: Props) {
         <button
           onClick={() => handleStatusChange('closed')}
           disabled={loading}
-          className="text-xs font-medium px-3 py-1.5 rounded-lg bg-[#2a2a2a] text-[#a3a3a3] hover:text-white hover:bg-[#333] transition-colors disabled:opacity-50"
+          className="text-xs font-medium px-3 py-1.5 rounded-lg bg-[#3a3730] text-[#8a8575] hover:text-white hover:bg-[#333] transition-colors disabled:opacity-50"
         >
           Close
         </button>
@@ -46,7 +46,7 @@ export function BriefStatusControls({ briefId, currentStatus }: Props) {
         <button
           onClick={() => handleStatusChange('live')}
           disabled={loading}
-          className="text-xs font-medium px-3 py-1.5 rounded-lg bg-[#1ee231]/10 text-[#1ee231] hover:bg-[#1ee231]/20 transition-colors disabled:opacity-50"
+          className="text-xs font-medium px-3 py-1.5 rounded-lg bg-[#C6F23E]/10 text-[#C6F23E] hover:bg-[#C6F23E]/20 transition-colors disabled:opacity-50"
         >
           Reopen
         </button>

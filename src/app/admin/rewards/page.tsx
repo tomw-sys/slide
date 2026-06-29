@@ -31,18 +31,18 @@ export default async function AdminRewardsPage() {
   const displayName = profile.display_name || user.email || ''
 
   return (
-    <main className="min-h-screen bg-[#151515]">
+    <main className="min-h-screen bg-[#100F0C]">
       <Nav displayName={displayName} role="admin" />
 
       <div className="max-w-4xl mx-auto px-6 py-10">
         <div className="flex items-center justify-between gap-4 mb-8">
           <div>
             <h1 className="text-white text-2xl font-bold mb-1">Rewards</h1>
-            <p className="text-[#a3a3a3] text-sm">Manage partner discount offers for creators.</p>
+            <p className="text-[#8a8575] text-sm">Manage partner discount offers for creators.</p>
           </div>
           <Link
             href="/admin"
-            className="text-sm text-[#a3a3a3] hover:text-white transition-colors"
+            className="text-sm text-[#8a8575] hover:text-white transition-colors"
           >
             Back to admin
           </Link>

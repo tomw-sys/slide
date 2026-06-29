@@ -100,14 +100,14 @@ export function SignInForm({ callbackError }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-[#151515] flex items-center justify-center px-4">
+    <main className="min-h-screen bg-[#100F0C] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <span className="text-[#1ee231] text-3xl font-bold tracking-tight">Slide</span>
-          <p className="text-[#a3a3a3] text-sm mt-2">Sign in to your account</p>
+          <span className="text-[#C6F23E] text-3xl font-bold tracking-tight">Slide</span>
+          <p className="text-[#8a8575] text-sm mt-2">Sign in to your account</p>
         </div>
 
-        <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-8">
+        <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-8">
           {error && (
             <div className="bg-[#ef4444]/10 border border-[#ef4444]/20 rounded-xl px-4 py-3 mb-6">
               <p className="text-[#ef4444] text-sm">{error}</p>
@@ -116,7 +116,7 @@ export function SignInForm({ callbackError }: Props) {
 
           <form onSubmit={handleEmailSignIn} className="space-y-4">
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">
                 Email address
               </label>
               <input
@@ -125,49 +125,49 @@ export function SignInForm({ callbackError }: Props) {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 required
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">Password</label>
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-4 py-3 hover:bg-[#17c029] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-4 py-3 hover:bg-[#ADDA38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
 
           <div className="my-6 flex items-center gap-4">
-            <div className="flex-1 h-px bg-[#2a2a2a]" />
-            <span className="text-[#a3a3a3] text-xs uppercase tracking-wider">or</span>
-            <div className="flex-1 h-px bg-[#2a2a2a]" />
+            <div className="flex-1 h-px bg-[#3a3730]" />
+            <span className="text-[#8a8575] text-xs uppercase tracking-wider">or</span>
+            <div className="flex-1 h-px bg-[#3a3730]" />
           </div>
 
           <button
             onClick={handleGoogleSignIn}
             disabled={loading}
-            className="w-full bg-[#151515] border border-[#2a2a2a] text-white rounded-xl px-4 py-3 hover:bg-[#222] transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-[#100F0C] border border-[#3a3730] text-white rounded-xl px-4 py-3 hover:bg-[#222] transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <GoogleIcon />
             Continue with Google
           </button>
 
-          <p className="text-center text-[#a3a3a3] text-sm mt-6">
+          <p className="text-center text-[#8a8575] text-sm mt-6">
             Don&apos;t have an account?{' '}
-            <Link href="/sign-up" className="text-[#1ee231] hover:underline">
+            <Link href="/sign-up" className="text-[#C6F23E] hover:underline">
               Sign up
             </Link>
           </p>

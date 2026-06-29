@@ -74,7 +74,7 @@ export default async function RewardsPage() {
   const displayName = profile.display_name || user.email || ''
 
   return (
-    <main className="min-h-screen bg-[#151515] pb-28">
+    <main className="min-h-screen bg-[#100F0C] pb-28">
       <TopNav
         displayName={displayName}
         role="creator"
@@ -84,18 +84,18 @@ export default async function RewardsPage() {
       <div className="max-w-4xl mx-auto px-5" style={{ paddingTop: 'max(calc(env(safe-area-inset-top) + 72px), 88px)', paddingBottom: 32 }}>
         {/* Page header */}
         <div className="mb-8">
-          <p className="text-[#1ee231] text-xs uppercase tracking-widest font-semibold mb-2">Members only</p>
+          <p className="text-[#C6F23E] text-xs uppercase tracking-widest font-semibold mb-2">Members only</p>
           <h1 className="text-white text-3xl font-black mb-1">Rewards wallet</h1>
-          <p className="text-[#a3a3a3] text-sm">
+          <p className="text-[#8a8575] text-sm">
             Exclusive drops from our brand partners. Yours just for being on Slide.
           </p>
         </div>
 
         {rewards.length === 0 ? (
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-10 text-center">
+          <div className="bg-[#17150F] border border-[#3a3730] rounded-2xl p-10 text-center">
             <p className="text-3xl mb-3">⭐</p>
             <p className="text-white font-semibold mb-1">No drops yet</p>
-            <p className="text-[#a3a3a3] text-sm">New partner offers are added regularly. Check back soon.</p>
+            <p className="text-[#8a8575] text-sm">New partner offers are added regularly. Check back soon.</p>
           </div>
         ) : (
           <>
@@ -104,13 +104,13 @@ export default async function RewardsPage() {
                 {/* Drop category header */}
                 <div className="flex items-center gap-3 mb-5">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#1ee231] animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-[#C6F23E] animate-pulse" />
                     <h2 className="text-white text-base font-black uppercase tracking-wide">
                       Live drops
                     </h2>
                   </div>
-                  <div className="flex-1 h-px bg-[#2a2a2a]" />
-                  <span className="text-[#a3a3a3] text-xs font-medium">
+                  <div className="flex-1 h-px bg-[#3a3730]" />
+                  <span className="text-[#8a8575] text-xs font-medium">
                     {available.length} available
                   </span>
                 </div>
@@ -126,13 +126,13 @@ export default async function RewardsPage() {
               <section>
                 <div className="flex items-center gap-3 mb-5">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#a3a3a3]" />
-                    <h2 className="text-[#a3a3a3] text-base font-black uppercase tracking-wide">
+                    <span className="w-2 h-2 rounded-full bg-[#8a8575]" />
+                    <h2 className="text-[#8a8575] text-base font-black uppercase tracking-wide">
                       Already revealed
                     </h2>
                   </div>
-                  <div className="flex-1 h-px bg-[#2a2a2a]" />
-                  <span className="text-[#a3a3a3] text-xs font-medium">
+                  <div className="flex-1 h-px bg-[#3a3730]" />
+                  <span className="text-[#8a8575] text-xs font-medium">
                     {redeemed.length} used
                   </span>
                 </div>

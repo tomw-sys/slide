@@ -80,7 +80,7 @@ export function SwipeFeed({ briefs }: Props) {
 
     const ratio = Math.min(Math.abs(delta) / SWIPE_THRESHOLD, 1)
     if (delta > 8) {
-      card.style.boxShadow = `0 0 ${48 * ratio}px rgba(30,226,49,${0.5 * ratio}), 0 0 ${100 * ratio}px rgba(30,226,49,${0.15 * ratio})`
+      card.style.boxShadow = `0 0 ${48 * ratio}px rgba(198,242,62,${0.5 * ratio}), 0 0 ${100 * ratio}px rgba(198,242,62,${0.15 * ratio})`
     } else if (delta < -8) {
       card.style.boxShadow = `0 0 ${48 * ratio}px rgba(239,68,68,${0.5 * ratio}), 0 0 ${100 * ratio}px rgba(239,68,68,${0.15 * ratio})`
     } else {
@@ -185,13 +185,13 @@ export function SwipeFeed({ briefs }: Props) {
   if (!current) {
     return (
       <div className="flex flex-col items-center justify-center flex-1 px-6 text-center" style={{ paddingTop: 'max(calc(env(safe-area-inset-top) + 52px), 68px)', paddingBottom: 100 }}>
-        <div className="w-24 h-24 rounded-full bg-[#1c1c1c] border border-[#2a2a2a] flex items-center justify-center text-5xl mb-6 animate-pop-in">
+        <div className="w-24 h-24 rounded-full bg-[#17150F] border border-[#3a3730] flex items-center justify-center text-5xl mb-6 animate-pop-in">
           🎬
         </div>
         <h2 className="text-white text-2xl font-bold mb-2 animate-fade-up" style={{ animationDelay: '100ms' }}>
           All caught up
         </h2>
-        <p className="text-[#a3a3a3] text-sm max-w-xs animate-fade-up" style={{ animationDelay: '160ms' }}>
+        <p className="text-[#8a8575] text-sm max-w-xs animate-fade-up" style={{ animationDelay: '160ms' }}>
           New briefs appear here as brands post them. Check back soon.
         </p>
       </div>
@@ -212,7 +212,7 @@ export function SwipeFeed({ briefs }: Props) {
     >
       {/* Counter */}
       <div className="flex justify-center pb-2 pointer-events-none">
-        <span className="text-[#a3a3a3] text-xs uppercase tracking-wider">
+        <span className="text-[#8a8575] text-xs uppercase tracking-wider">
           {index + 1} / {briefs.length}
         </span>
       </div>
@@ -238,7 +238,7 @@ export function SwipeFeed({ briefs }: Props) {
               />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <p className="text-white text-lg font-black leading-tight line-clamp-2">{next.title}</p>
-                <p className="text-[#a3a3a3] text-xs mt-1">{next.brand_name}</p>
+                <p className="text-[#8a8575] text-xs mt-1">{next.brand_name}</p>
               </div>
             </div>
           )}
@@ -297,8 +297,8 @@ export function SwipeFeed({ briefs }: Props) {
               className="absolute top-8 left-5 z-20 pointer-events-none -rotate-[14deg]"
               style={{ opacity: 0 }}
             >
-              <div className="border-[3px] border-[#1ee231] rounded-xl px-4 py-1.5 bg-black/40 backdrop-blur-sm">
-                <span className="text-[#1ee231] font-black text-xl tracking-[0.2em] uppercase">SLIDE</span>
+              <div className="border-[3px] border-[#C6F23E] rounded-xl px-4 py-1.5 bg-black/40 backdrop-blur-sm">
+                <span className="text-[#C6F23E] font-black text-xl tracking-[0.2em] uppercase">SLIDE</span>
               </div>
             </div>
 
@@ -312,7 +312,7 @@ export function SwipeFeed({ briefs }: Props) {
                 <span />
               )}
               <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/20">
-                <svg viewBox="0 0 20 20" fill="#1ee231" className="w-3.5 h-3.5 flex-shrink-0">
+                <svg viewBox="0 0 20 20" fill="#C6F23E" className="w-3.5 h-3.5 flex-shrink-0">
                   <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                 </svg>
                 <span className="text-[11px] font-semibold text-white uppercase tracking-wider">Verified</span>
@@ -322,7 +322,7 @@ export function SwipeFeed({ briefs }: Props) {
             {/* Bottom content */}
             <div className="absolute bottom-0 left-0 right-0 px-6 pb-6 z-10">
               {current.budget && (
-                <p className="text-[#1ee231] text-4xl font-black leading-none mb-2">
+                <p className="text-[#C6F23E] text-4xl font-black leading-none mb-2">
                   {formatBudget(current.budget)}
                 </p>
               )}
@@ -330,9 +330,9 @@ export function SwipeFeed({ briefs }: Props) {
                 {current.title}
               </h2>
               <div className="flex items-center justify-between">
-                <p className="text-[#d4d4d4] text-sm font-medium">{current.brand_name}</p>
+                <p className="text-[#F4EFE3] text-sm font-medium">{current.brand_name}</p>
                 {current.deadline && (
-                  <span className="text-[#a3a3a3] text-xs">{daysLeft(current.deadline)}</span>
+                  <span className="text-[#8a8575] text-xs">{daysLeft(current.deadline)}</span>
                 )}
               </div>
             </div>
@@ -350,10 +350,10 @@ export function SwipeFeed({ briefs }: Props) {
           aria-label="Pass"
           className="group flex flex-col items-center gap-1.5 disabled:opacity-40 tap-scale"
         >
-          <span className="w-16 h-16 rounded-full bg-[#1c1c1c] border-2 border-[#ef4444]/30 flex items-center justify-center text-[#ef4444] text-xl group-hover:border-[#ef4444] group-hover:bg-[#ef4444]/10 transition-all">
+          <span className="w-16 h-16 rounded-full bg-[#17150F] border-2 border-[#ef4444]/30 flex items-center justify-center text-[#ef4444] text-xl group-hover:border-[#ef4444] group-hover:bg-[#ef4444]/10 transition-all">
             ✕
           </span>
-          <span className="text-[#a3a3a3] text-[10px] uppercase tracking-widest font-semibold">Pass</span>
+          <span className="text-[#8a8575] text-[10px] uppercase tracking-widest font-semibold">Pass</span>
         </button>
 
         <button
@@ -362,10 +362,10 @@ export function SwipeFeed({ briefs }: Props) {
           aria-label="Slide"
           className="group flex flex-col items-center gap-1.5 disabled:opacity-40 tap-scale"
         >
-          <span className="w-20 h-20 rounded-full bg-[#1ee231] flex items-center justify-center text-[#151515] text-3xl group-hover:bg-[#17c029] transition-all shadow-[0_0_32px_rgba(30,226,49,0.3)]">
+          <span className="w-20 h-20 rounded-full bg-[#C6F23E] flex items-center justify-center text-[#100F0C] text-3xl group-hover:bg-[#ADDA38] transition-all shadow-[0_0_32px_rgba(198,242,62,0.3)]">
             →
           </span>
-          <span className="text-[#1ee231] text-[10px] uppercase tracking-widest font-semibold">Slide</span>
+          <span className="text-[#C6F23E] text-[10px] uppercase tracking-widest font-semibold">Slide</span>
         </button>
       </div>
     </div>

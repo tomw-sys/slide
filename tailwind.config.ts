@@ -10,25 +10,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#151515',
-        surface: '#1c1c1c',
-        border: '#2a2a2a',
+        background: '#100F0C',
+        surface: '#17150F',
+        border: '#3a3730',
         accent: {
-          DEFAULT: '#1ee231',
-          foreground: '#151515',
+          DEFAULT: '#C6F23E',
+          foreground: '#100F0C',
+          hover: '#ADDA38',
         },
         destructive: {
           DEFAULT: '#ef4444',
-          foreground: '#ffffff',
+          foreground: '#FBF8F1',
         },
         foreground: {
-          DEFAULT: '#ffffff',
-          secondary: '#d4d4d4',
-          muted: '#a3a3a3',
+          DEFAULT: '#FBF8F1',
+          secondary: '#F4EFE3',
+          muted: '#8a8575',
+          subtle: '#5C584C',
         },
+        pink: '#FF5C9D',
+        purple: '#7C5CFF',
+        blue: '#4D8BFF',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        display: ['var(--font-unbounded)', 'Unbounded', 'sans-serif'],
       },
       borderRadius: {
         DEFAULT: '0.75rem',

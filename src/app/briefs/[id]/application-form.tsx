@@ -44,29 +44,29 @@ export function ApplicationForm({ briefId, briefBudget }: Props) {
   return (
     <form onSubmit={handleSubmit}>
       <h2 className="text-white font-semibold mb-1">Apply to this brief</h2>
-      <p className="text-[#a3a3a3] text-sm mb-4">
+      <p className="text-[#8a8575] text-sm mb-4">
         Tell the brand why you are the right creator for this job.
       </p>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">Your pitch</label>
+          <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">Your pitch</label>
           <textarea
             value={pitch}
             onChange={(e) => setPitch(e.target.value)}
             placeholder="Introduce yourself, explain your approach to this brief, and share any relevant experience or previous work links."
             rows={5}
             required
-            className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all resize-none text-sm"
+            className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all resize-none text-sm"
           />
         </div>
 
         <div>
-          <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">
+          <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">
             Your proposed rate
           </label>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#a3a3a3] font-medium">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8a8575] font-medium">
               £
             </span>
             <input
@@ -77,7 +77,7 @@ export function ApplicationForm({ briefId, briefBudget }: Props) {
               min="1"
               step="1"
               required
-              className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl pl-8 pr-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+              className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl pl-8 pr-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
             />
           </div>
         </div>
@@ -87,7 +87,7 @@ export function ApplicationForm({ briefId, briefBudget }: Props) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-4 py-3 hover:bg-[#17c029] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-4 py-3 hover:bg-[#ADDA38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? 'Submitting...' : 'Submit application'}
         </button>

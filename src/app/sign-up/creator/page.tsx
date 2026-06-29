@@ -59,17 +59,17 @@ export default function CreatorSignUpPage() {
 
   if (checkEmail) {
     return (
-      <main className="min-h-screen bg-[#151515] flex items-center justify-center px-4">
+      <main className="min-h-screen bg-[#100F0C] flex items-center justify-center px-4">
         <div className="w-full max-w-md text-center">
           <div className="text-5xl mb-6">📬</div>
           <h1 className="text-white text-2xl font-bold mb-3">Check your email</h1>
-          <p className="text-[#a3a3a3] text-sm leading-relaxed">
+          <p className="text-[#8a8575] text-sm leading-relaxed">
             We sent a confirmation link to <span className="text-white">{email}</span>. Click it to
             verify your account and continue to your creator profile setup.
           </p>
           <button
             onClick={() => setCheckEmail(false)}
-            className="mt-6 text-[#1ee231] text-sm hover:underline"
+            className="mt-6 text-[#C6F23E] text-sm hover:underline"
           >
             Use a different email
           </button>
@@ -79,37 +79,37 @@ export default function CreatorSignUpPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#151515] flex items-center justify-center px-4">
+    <main className="min-h-screen bg-[#100F0C] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/sign-up" className="text-[#a3a3a3] text-sm hover:text-white transition-colors">
+          <Link href="/sign-up" className="text-[#8a8575] text-sm hover:text-white transition-colors">
             ← Back
           </Link>
           <div className="mt-4">
-            <span className="text-[#1ee231] text-3xl font-bold tracking-tight">Slide</span>
-            <p className="text-[#a3a3a3] text-sm mt-2">Create your creator account</p>
+            <span className="text-[#C6F23E] text-3xl font-bold tracking-tight">Slide</span>
+            <p className="text-[#8a8575] text-sm mt-2">Create your creator account</p>
           </div>
         </div>
 
-        <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-8">
+        <div className="bg-[#17150F] border border-[#3a3730] rounded-xl p-8">
           <button
             onClick={handleGoogleSignUp}
             disabled={loading}
-            className="w-full bg-[#151515] border border-[#2a2a2a] text-white rounded-xl px-4 py-3 hover:bg-[#222] transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed mb-6"
+            className="w-full bg-[#100F0C] border border-[#3a3730] text-white rounded-xl px-4 py-3 hover:bg-[#222] transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed mb-6"
           >
             <GoogleIcon />
             Continue with Google
           </button>
 
           <div className="flex items-center gap-4 mb-6">
-            <div className="flex-1 h-px bg-[#2a2a2a]" />
-            <span className="text-[#a3a3a3] text-xs uppercase tracking-wider">or</span>
-            <div className="flex-1 h-px bg-[#2a2a2a]" />
+            <div className="flex-1 h-px bg-[#3a3730]" />
+            <span className="text-[#8a8575] text-xs uppercase tracking-wider">or</span>
+            <div className="flex-1 h-px bg-[#3a3730]" />
           </div>
 
           <form onSubmit={handleEmailSignUp} className="space-y-4">
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">
                 Email address
               </label>
               <input
@@ -118,12 +118,12 @@ export default function CreatorSignUpPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 required
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-[#d4d4d4] text-sm font-medium mb-1.5">Password</label>
+              <label className="block text-[#F4EFE3] text-sm font-medium mb-1.5">Password</label>
               <input
                 type="password"
                 value={password}
@@ -131,7 +131,7 @@ export default function CreatorSignUpPage() {
                 placeholder="Minimum 8 characters"
                 minLength={8}
                 required
-                className="w-full bg-[#151515] border border-[#2a2a2a] rounded-xl px-4 py-3 text-white placeholder-[#a3a3a3] focus:outline-none focus:ring-2 focus:ring-[#1ee231] focus:border-transparent transition-all"
+                className="w-full bg-[#100F0C] border border-[#3a3730] rounded-xl px-4 py-3 text-white placeholder-[#8a8575] focus:outline-none focus:ring-2 focus:ring-[#C6F23E] focus:border-transparent transition-all"
               />
             </div>
 
@@ -140,19 +140,19 @@ export default function CreatorSignUpPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#1ee231] text-[#151515] font-semibold rounded-xl px-4 py-3 hover:bg-[#17c029] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#C6F23E] text-[#100F0C] font-semibold rounded-xl px-4 py-3 hover:bg-[#ADDA38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Creating account...' : 'Create creator account'}
             </button>
           </form>
 
-          <p className="text-center text-[#a3a3a3] text-xs mt-6 leading-relaxed">
+          <p className="text-center text-[#8a8575] text-xs mt-6 leading-relaxed">
             By signing up you agree to our terms of service and privacy policy.
           </p>
 
-          <p className="text-center text-[#a3a3a3] text-sm mt-4">
+          <p className="text-center text-[#8a8575] text-sm mt-4">
             Already have an account?{' '}
-            <Link href="/sign-in" className="text-[#1ee231] hover:underline">
+            <Link href="/sign-in" className="text-[#C6F23E] hover:underline">
               Sign in
             </Link>
           </p>
