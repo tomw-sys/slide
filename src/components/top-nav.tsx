@@ -153,12 +153,14 @@ export function TopNav({ displayName, role, tier, avatarUrl }: TopNavProps) {
 
   return (
     <>
-      {/* Floating transparent header */}
+      {/* Sticky solid header */}
       <header
-        className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-5"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5"
         style={{
           paddingTop: 'max(env(safe-area-inset-top), 16px)',
           paddingBottom: 12,
+          background: '#100F0C',
+          borderBottom: '1px solid #3a3730',
         }}
       >
         {/* Hamburger — three lines, bottom one shorter */}
